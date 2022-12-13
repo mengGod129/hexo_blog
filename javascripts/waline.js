@@ -5,4 +5,5 @@ import {
 init({
 	el: '#waline-container',
 	serverURL: window.aomori.waline.serverURL,
+	search: window.aomori.waline.search
 });
