@@ -12,6 +12,11 @@
             highlight: window.aomori.valine.highlight,
             recordIP: window.aomori.valine.recordIP,
             emojiCDN: window.aomori.valine.emojiCDN,
+            emojiMaps: {
+                "smile":"e3/2018new_weixioa02_org.png",
+                "lovely":"09/2018new_keai_org.png",
+                // ... 更多表情
+            },
             enableQQ: window.aomori.valine.enableQQ,
             requiredFields: window.aomori.valine.requiredFields,
         })

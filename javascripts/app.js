@@ -13,3 +13,6 @@ import './gitalk'
 
 // Valine
 import './valine'
+
+// Valine
+import './waline'
