@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.meng.me/friends/index.html</loc>
+    
+    <lastmod>2022-12-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/posts/23045.html</loc>
     
     <lastmod>2022-12-16</lastmod>
@@ -14,15 +23,6 @@
     <loc>https://www.meng.me/message/index.html</loc>
     
     <lastmod>2022-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/friends/index.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -83,14 +83,14 @@
 
   
   <url>
-    <loc>https://www.meng.me/tags/NPM/</loc>
+    <loc>https://www.meng.me/tags/Alist/</loc>
     <lastmod>2022-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.meng.me/tags/Alist/</loc>
+    <loc>https://www.meng.me/tags/NPM/</loc>
     <lastmod>2022-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -99,14 +99,14 @@
 
   
   <url>
-    <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
     <lastmod>2022-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
+    <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
