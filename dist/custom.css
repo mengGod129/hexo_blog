@@ -18,7 +18,7 @@
 body {
 	/* background-color: var(--color-bg); */
 	background: linear-gradient(90deg,rgba(247,149,51,.1),rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1));
-	font: 14px/1 PingFangSC,"Microsoft Yahei",Microsoft Sans Serif,sans-serif;
+	/* font: 14px/1 PingFangSC,"Microsoft Yahei",Microsoft Sans Serif,sans-serif; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility
@@ -335,7 +335,7 @@ img:not([src]):not([srcset]) {
 .sidebar {
 	position: fixed;
 	right: calc((100% - 1160px)/ 2);
-	top: 364px;
+	top: 367px;
 	-webkit-transition: all .2s;
 	transition: all .2s;
 	width: 280px
@@ -631,9 +631,9 @@ img:not([src]):not([srcset]) {
 
 .index .article .article-inner {
 	position: relative;
-	display: -webkit-box;
+	/* display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex
+	display: flex */
 }
 
 .index .article .article-inner video {
@@ -644,7 +644,7 @@ img:not([src]):not([srcset]) {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 260px;
 	flex: 0 0 260px;
-	margin-right: 20px;
+	/* margin-right: 20px; */
 	position: relative
 }
 
@@ -664,17 +664,11 @@ img:not([src]):not([srcset]) {
 }
 
 .index .article .article-inner .article-feature a::before {
-	background-color: var(--color-black);
-	bottom: 0;
-	content: "";
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	-webkit-transition: all .8s ease 0s;
-	transition: all .8s ease 0s;
-	opacity: .16;
-	z-index: 1
+	box-sizing: border-box;
+    margin: 25px auto 25px;
+    padding: 0;
+    border-radius: 9px;
+    box-shadow: 0 0 9px rgb(0 0 0 / 25%);
 }
 
 .index .article .article-inner .article-feature a:hover img {
@@ -714,9 +708,11 @@ img:not([src]):not([srcset]) {
     transition-property: background;
 }
 .index .article .article-inner .article-body .article-title {
-	font-size: 1.2rem;
-	font-weight: 700;
-	padding: 0 0 12px
+	text-shadow: 1px 1px 3px rgb(68 64 0 / 45%);
+	font-size: 25px;
+	font-weight: 900;
+	padding: 0 0 12px;
+	text-align: center;
 }
 
 .index .article .article-inner .article-body .article-title a {
@@ -729,7 +725,9 @@ img:not([src]):not([srcset]) {
 }
 
 .index .article .article-inner .article-body .article-entry {
-	font-weight: 300
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 15px;
 }
 
 .index .article .article-footer {
@@ -1527,6 +1525,7 @@ img:not([src]):not([srcset]) {
 .index-meng-button {
 	text-align: center;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .scaleup-meng {
@@ -1596,6 +1595,52 @@ img:not([src]):not([srcset]) {
     display: block;
     color: #97dffd;
     text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+
+.meng-index-post {
+	text-align: center;
+	margin: 3px 0 60px 0;
+	font-size: 14px;
+}
+
+.meng-date {
+	display: contents;
+}
+
+.meng-index-post-badge {
+	position: absolute;
+    left: -35px;
+    top: 85px;
+    border-color: #47456d;
+    box-shadow: 0 2px 12px rgb(151 223 253 / 85%);
+    background-color: #97dffd;
+    margin: 5px 0 15px 2px;
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+    display: inline-block;
+    padding: 7px 11px 7px 32px;
+    line-height: 1;
+}
+
+.meng-index-post-badge:after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    border-top: 0 solid transparent;
+    border-right-width: 1em;
+    border-right-color: inherit;
+    border-right-style: solid;
+    border-bottom: 1em solid transparent;
+    border-left: 0 solid transparent;
+    width: 0;
+    height: 0;
+}
+
+@media screen and (max-width: 768px) {
+.sidebar      {
+	display:none;
+}
 }
 
 @media screen and (max-width:1140px) {
