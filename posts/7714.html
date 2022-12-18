@@ -6,45 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     
-    <title>AList+Aria2+AriaNg私盘利器 | MENG.ME</title>
+    <title>Hexo部署至云服务器（Git配置） | MENG.ME</title>
 
-    <meta name="description" content="&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;/p&gt;
-&lt;/blockquote&gt;">
+    <meta name="description" content="&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&#34;/postsImages/hexo-git-1.jpg&#34; alt=&#34;image&#34;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;">
     <meta name="keywords" content="Meng,mengBlog">
 
     
 
     <meta property="og:locale" content="cn" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content= "AList+Aria2+AriaNg私盘利器 | MENG.ME"  />
-    <meta property="og:description" content= "&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;/p&gt;
-&lt;/blockquote&gt;" />
-    <meta property="og:url" content="https://www.meng.me/posts/56872.html" />
+    <meta property="og:title" content= "Hexo部署至云服务器（Git配置） | MENG.ME"  />
+    <meta property="og:description" content= "&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&#34;/postsImages/hexo-git-1.jpg&#34; alt=&#34;image&#34;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;" />
+    <meta property="og:url" content="https://www.meng.me/posts/7714.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="Meng" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;/p&gt;
-&lt;/blockquote&gt;" />
-    <meta name="twitter:title" content="AList+Aria2+AriaNg私盘利器 | MENG.ME"/>
-    <meta name="twitter:description" content="&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;/p&gt;
-&lt;/blockquote&gt;"/>
+    <meta property="og:description" content="&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&#34;/postsImages/hexo-git-1.jpg&#34; alt=&#34;image&#34;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;" />
+    <meta name="twitter:title" content="Hexo部署至云服务器（Git配置） | MENG.ME"/>
+    <meta name="twitter:description" content="&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&#34;/postsImages/hexo-git-1.jpg&#34; alt=&#34;image&#34;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;/p&gt;
-&lt;/blockquote&gt;",
+            "description": "&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&#34;/postsImages/hexo-git-1.jpg&#34; alt=&#34;image&#34;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;",
             "author": { "@type": "Person", "name": "Meng" },
             "@type": "BlogPosting",
-            "url": "https://www.meng.me/posts/56872.html",
+            "url": "https://www.meng.me/posts/7714.html",
             "publisher": {
             "@type": "Organization",
             "logo": {
@@ -53,11 +38,11 @@
             },
             "name": "Meng"
             },
-            "headline": "AList+Aria2+AriaNg私盘利器 | MENG.ME",
-            "datePublished": "2022-12-10T07:27:16.000Z",
+            "headline": "Hexo部署至云服务器（Git配置） | MENG.ME",
+            "datePublished": "2022-12-18T12:51:31.000Z",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://www.meng.me/posts/56872.html"
+                "@id": "https://www.meng.me/posts/7714.html"
             },
             "@context": "http://schema.org"
         }
@@ -214,7 +199,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clbtfmld50001egq6au11cbxs" class="article article-type-post" itemscope
+    <article id="post-clbtfmld60003egq65f8ehy95" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -230,7 +215,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      AList+Aria2+AriaNg私盘利器
+      Hexo部署至云服务器（Git配置）
     </h1>
   
 
@@ -240,19 +225,11 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2022-12-10T07:27:16.000Z" itemprop="datePublished">2022-12-10</time>
+  <time datetime="2022-12-18T12:51:31.000Z" itemprop="datePublished">2022-12-18</time>
 </div>
 
             
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/">笔记本</a>
-            </div>
-            
 
-            
-            <div class="article-tag">
-                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Alist/" rel="tag">Alist</a></li></ul>
-            </div>
             
 
             
@@ -260,73 +237,90 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
-<p>食用前请确保你已经安装了Docker，并掌握了docker的基础知识。</p>
-</blockquote>
+            <p>先给大家看个日志：<br><img src="/postsImages/hexo-git-1.jpg" alt="image"><br>一定要注意，安全无小事，密码切勿使用安全级别较低的密码。</p>
 <span id="more"></span>
-
-<h3 id="AList安装"><a href="#AList安装" class="headerlink" title="AList安装"></a>AList安装</h3><blockquote>
-<p>官方文档地址：<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/install/docker.html">https://alist.nn.ci/zh/guide/install/docker.html</a></p>
+<p>因为我只是搭建git服务测试，所以使用的密码很简单，他就成功登录上来了。<br>随后，这个人又尝试了gitlab、emqx、mc等等常用用户名登录。<br><img src="/postsImages/hexo-git-2.jpg" alt="image"><br>我是用一台新服务器搭建测试，还好服务器没有什么资料等，而且此用户也是没有root权限的，之所以会发现这个问题还是因为腾讯云的预警。<br><img src="/postsImages/hexo-git-3.jpg" alt="image"><br>经过工单咨询和腾讯云工程师进一步确认得知：<br>1、确认服务器被入侵且存在异常脚本程序。<br>2、确认服务器内存在挖矿相关病毒程序。<br>3、确认服务器正在请求高危命令。<br>以上就不展开说了，所以各位密码一定要使用高强度密码，哪怕是自己忘记需要重置密码，其实这也是变相的定期修改密码。<br>好了，正文开始：</p>
+<hr>
+<h2 id="本地准备"><a href="#本地准备" class="headerlink" title="本地准备"></a>本地准备</h2><p>相信大家都会把hexo部署至github，本文的思路是一样的，在云服务器建立git仓库用于存储public代码，然后通过nginx指定此目录来访问。</p>
+<h3 id="生成ssh密钥"><a href="#生成ssh密钥" class="headerlink" title="生成ssh密钥"></a>生成ssh密钥</h3><p>请确认自己有没有生成ssh密钥，如果没有则执行一下命令：</p>
+<blockquote>
+<p>查看有没有 ~/.ssh 这个文件夹，其中id_rsa.pub则为公钥。<br>windows用户在：<code>C:\Users\yourname\.ssh</code></p>
 </blockquote>
-<p>docker run命令</p>
-<pre><code class="docker">docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name=&quot;alist&quot; xhofe/alist:latest
+<pre><code>git config --global user.name &quot;你的用户名&quot;
+git config --global user.email &quot;你的的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的的邮箱&quot;
 </code></pre>
-<p>在此，建议使用-v指令映射一个地址出来用于本地存储的配置地址<br><img src="/postsImages/alist-1.png" alt="image"><br>运行后，访问ip:端口即可访问。后台管理员账号密码查看：</p>
-<pre><code>docker exec -it alist ./alist admin
+<h2 id="服务器搭建"><a href="#服务器搭建" class="headerlink" title="服务器搭建"></a>服务器搭建</h2><h3 id="root账号操作部分"><a href="#root账号操作部分" class="headerlink" title="root账号操作部分"></a>root账号操作部分</h3><p>1、切换到root账号</p>
+<pre><code>su root
 </code></pre>
-<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><p>1、failed get storage: can’t find storage with rawPath: /<br>这是说明你还没配置存储，管理员登录后台配置存储后即可。</p>
-<h3 id="Aria2安装"><a href="#Aria2安装" class="headerlink" title="Aria2安装"></a>Aria2安装</h3><p>拉取镜像：<code>docker pull p3terx/aria2-pro</code><br>启动容器：</p>
-<pre><code>docker run -d \
---name aria2 \
---restart unless-stopped \
---log-opt max-size=1m \
--e PUID=$UID \
--e PGID=$GID \
--e UMASK_SET=022 \
--e RPC_SECRET=你的rpc密匙 \
--e RPC_PORT=6800 \
--e LISTEN_PORT=6888 \
--p 6800:6800 \
--p 6888:6888 \
--p 6888:6888/udp \
--v /mnt/aria2/config:/config \
--v /var/www/resource:/downloads \
-p3terx/aria2-pro
+<p>如果你登录的就是root账号则无需切换。<br>2、 安装git<br>请先检查是否安装git，如果安装了就不用安装了。</p>
+<blockquote>
+<p>执行<code>git --version</code>，如果提醒git command not found就是没安装</p>
+</blockquote>
+<pre><code>yum install git
+</code></pre>
+<p>3、 创建git账户并设置密码</p>
+<pre><code>adduser git
+passwd git
 </code></pre>
 <blockquote>
-<p><code>RPC_SECRET</code>设置你的rpc密码<br>这里我把/downloads映射和AList一样的地址，下载后的文件就可以直接在AList中看见了。</p>
+<p>小白提醒：设置密码时，密码时不显示的，不是你键盘坏了。new password后他会提示你再次输入的，也是一样的。</p>
 </blockquote>
-<h3 id="AriaNg安装"><a href="#AriaNg安装" class="headerlink" title="AriaNg安装"></a>AriaNg安装</h3><p>拉取镜像：<code>docker pull p3terx/ariang</code><br>启动容器：</p>
-<pre><code>docker run -d \
---name ariang \
---log-opt max-size=1m \
---restart unless-stopped \
--p 6880:6880 \
-p3terx/ariang
+<ol start="4">
+<li>赋予权限<pre><code>chmod 740 /etc/sudoers
 </code></pre>
-<p>运行后，访问ip:端口即可访问。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
-<p>使用我也不知道写什么，自己去探索有趣的功能或许更有意义！这里写几点基本的配置或者错误吧。</p>
+5、 编辑 /etc/sudoers 文件<pre><code>vim /etc/sudoers
+</code></pre>
+在<code>root ALL=(ALL) ALL</code>下一行加入：<pre><code>git     ALL=(ALL)     ALL
+</code></pre>
+6、 把权限改回来<pre><code>chmod 400 /etc/sudoers
+</code></pre>
+</li>
+</ol>
+<h3 id="git账号操作部分"><a href="#git账号操作部分" class="headerlink" title="git账号操作部分"></a>git账号操作部分</h3><p>1、创建.ssh文件夹</p>
+<pre><code>su git
+cd ~
+mkdir .ssh
+cd .ssh
+</code></pre>
+<p>2、创建git密钥</p>
+<pre><code>ssh-keygen
+</code></pre>
+<p>3、复制一份公钥</p>
+<pre><code>cp id_rsa.pub authorized_keys
+</code></pre>
+<p>4、修改权限</p>
+<pre><code>chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+</code></pre>
+<p>5、上传本地公钥<br>把本文第一步生成的<code>id_rsa.pub</code>内容拷贝到服务器的<code>authorized_keys</code>文件末尾即可。<br>6、本地cmd测试<br>你在本地打开命令行工具输入：</p>
+<pre><code>ssh -v git@云服务器的公网IP
+</code></pre>
+<p>免密登录即ok</p>
+<h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><blockquote>
+<p>注意：这里依然是git账号操作</p>
 </blockquote>
-<p>1、Aria2状态未连接<br><img src="/postsImages/alist-2.png" alt="image-1666170697262"><br>在AriaNg设置 &gt; RPC中填写你的Aria2 PRC地址，随后刷新页面，Aria2状态为已连接即可。</p>
-<p>2、下载出现:<code>发生错误(16)-文件创建或删除已有文件失败.</code><br><img src="/postsImages/alist-3.png" alt="image-1666170994513"><br>你可以尝试下chmod 777 xxx提权，看是不是权限的文件。</p>
-<blockquote>
-<p>xxx为下载地址，这个地址是在docker run Aria2时映射的地址。例如我的就是<code>/var/www/resource</code><br>这里在百度找了一个mp4地址测试：<code>http://vjs.zencdn.net/v/oceans.mp4</code></p>
-</blockquote>
-<p>3、忘记了docker映射地址</p>
-<blockquote>
-<p>你也是个人才。。。刚部署就忘了</p>
-</blockquote>
-<p>执行命令：<code>docker inspect alist | grep Mounts -A 20</code></p>
-<blockquote>
-<p>alist为容器名，如果你不是这个名字你就换成自己的name</p>
-</blockquote>
-<p>4、Alist和Aria2联动<br>这个在安装一节中讲过了，作用就是Aria2下载后直接就到网盘目录了。<br>其实也很简单，就是Alist地址和Aria2下载地址配置成一样就行。<br>我这里在docker中映射到的都是：<code>/var/www/resource</code><br>在Alist中配置本机存储如下：<br><img src="/postsImages/alist-4.png" alt="image-1666171526901"></p>
-<blockquote>
-<p>注意，这里的跟文件夹路径是docker容器中的地址，否则会提示找不到。</p>
-</blockquote>
-<p>5、Alist配置Aria2<br>在设置 &gt; 其他 中配置Aria2，输入地址和密匙即可。</p>
+<p>1、初始化git仓库<br>创建位置自己选择，我这演示创建在<code>/home/git</code>下</p>
+<pre><code>cd ~
+git init --bare mengblog.git
+</code></pre>
+<p>2、创建git钩子</p>
+<pre><code>vim ~/mengblog.git/hooks/post-receive
+</code></pre>
+<p>输入以下内容：</p>
+<pre><code>git --work-tree=/home/git/blog --git-dir=/home/git/mengblog.git checkout -f
+</code></pre>
+<p>这里的目录自行选择，我这里是<code>/home/git/blog</code><br>3、设置文件可执行权限</p>
+<pre><code>chmod +x ~/mengblog.git/hooks/post-receive
+</code></pre>
+<h3 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h3><p>这一步只需要修改nginx配置中相应的server服务：</p>
+<pre><code>root /home/git/blog;
+</code></pre>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><p>其实这里就简单了，和github一样，把_config.yml文件中deploy&gt;repo地址改成：</p>
+<pre><code>git@云服务器公网IP:/home/git/mengblog.git
+</code></pre>
+<p>然后<code>hexo d</code>就行了</p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>到这里你只需要去访问nginx相应server绑定的域名即可。<br>在上一步中，<code>hexo d</code>可能会出现被拒绝等问题，如果你按照文章一步一步走的，那可能是在账号使用那一块出现了问题。<br>注意你的<code>/home/git/blog</code>所有者是不是<code>git</code>，如果不是请修改成<code>git</code></p>
 
         </div>
 
@@ -351,19 +345,10 @@ p3terx/ariang
     
 <nav class="article-nav">
   
-    <a href="/posts/23045.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          NPM包发布、更新、撤销
-        
-      </div>
-    </a>
   
-  
-    <a href="/posts/16107.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/23045.html" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">NPM包发布、更新、撤销</div>
     </a>
   
 </nav>
@@ -372,15 +357,15 @@ p3terx/ariang
     <!-- <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=AList+Aria2+AriaNg私盘利器 - MENG.ME&url=https%3A%2F%2Fwww.meng.me%2Fposts%2F56872.html">
+            href="https://twitter.com/share?text=Hexo部署至云服务器（Git配置） - MENG.ME&url=https%3A%2F%2Fwww.meng.me%2Fposts%2F7714.html">
             <ion-icon name="logo-twitter"></ion-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=AList+Aria2+AriaNg私盘利器 - MENG.ME&u=https%3A%2F%2Fwww.meng.me%2Fposts%2F56872.html">
+            href="https://www.facebook.com/sharer.php?title=Hexo部署至云服务器（Git配置） - MENG.ME&u=https%3A%2F%2Fwww.meng.me%2Fposts%2F7714.html">
             <ion-icon name="logo-facebook"></ion-icon>
         </a> -->
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=AList+Aria2+AriaNg私盘利器 - MENG.ME&url=https://www.meng.me/posts/56872.html&pic=">
+            href="https://service.weibo.com/share/share.php?title=Hexo部署至云服务器（Git配置） - MENG.ME&url=https://www.meng.me/posts/7714.html&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     <!-- </section> -->
