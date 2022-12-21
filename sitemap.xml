@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.meng.me/friends/index.html</loc>
+    <loc>https://www.meng.me/posts/23180.html</loc>
     
-    <lastmod>2022-12-19</lastmod>
+    <lastmod>2022-12-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,16 @@
   <url>
     <loc>https://www.meng.me/posts/7714.html</loc>
     
-    <lastmod>2022-12-18</lastmod>
+    <lastmod>2022-12-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/friends/index.html</loc>
+    
+    <lastmod>2022-12-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +103,7 @@
 
   <url>
     <loc>https://www.meng.me/</loc>
-    <lastmod>2022-12-20</lastmod>
+    <lastmod>2022-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,14 +111,21 @@
   
   <url>
     <loc>https://www.meng.me/tags/Alist/</loc>
-    <lastmod>2022-12-20</lastmod>
+    <lastmod>2022-12-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/NPM/</loc>
-    <lastmod>2022-12-20</lastmod>
+    <lastmod>2022-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/tags/ubuntu/</loc>
+    <lastmod>2022-12-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -118,14 +134,14 @@
   
   <url>
     <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
-    <lastmod>2022-12-20</lastmod>
+    <lastmod>2022-12-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2022-12-20</lastmod>
+    <lastmod>2022-12-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
