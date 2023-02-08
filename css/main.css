@@ -1,28 +1,28 @@
 /* vietnamese */
 @font-face {
   font-family: 'Candyshop';
-  src: url("/fonts/Candyshop.otf");
+  src: url("https://npm.elemecdn.com/mengblog@1.0.6/fonts/Candyshop.otf");
   font-display: swap;
 }
 @font-face {
   font-family: SFCompactRounded;
   font-weight: 400;
-  src: url("/fonts/SF-Compact-Rounded-Regular.otf") format('opentype');
+  src: url("https://npm.elemecdn.com/mengblog@1.0.6/fonts/SF-Compact-Rounded-Regular.otf") format('opentype');
 }
 @font-face {
   font-family: SFCompactRounded;
   font-weight: 300;
-  src: url("/fonts/SF-Compact-Rounded-Light.otf") format('opentype');
+  src: url("https://npm.elemecdn.com/mengblog@1.0.6/fonts/SF-Compact-Rounded-Light.otf") format('opentype');
 }
 @font-face {
   font-family: SFCompactRounded;
   font-weight: 500;
-  src: url("/fonts/SF-Compact-Rounded-Medium.otf") format('opentype');
+  src: url("https://npm.elemecdn.com/mengblog@1.0.6/fonts/SF-Compact-Rounded-Medium.otf") format('opentype');
 }
 @font-face {
   font-family: SFCompactRounded;
   font-weight: 600;
-  src: url("/fonts/SF-Compact-Rounded-Semibold.otf") format('opentype');
+  src: url("https://npm.elemecdn.com/mengblog@1.0.6/fonts/SF-Compact-Rounded-Semibold.otf") format('opentype');
 }
 /* normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
@@ -1969,7 +1969,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #03e0ff;
+  background: #ff7859;
 }
 .links-of-blogroll {
   font-size: 13px;
