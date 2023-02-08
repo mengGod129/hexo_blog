@@ -2,21 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.meng.me/about/index.html</loc>
+    
+    <lastmod>2023-02-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/posts/30587.html</loc>
     
-    <lastmod>2023-02-07</lastmod>
+    <lastmod>2023-02-08</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/friends/index.html</loc>
+    
+    <lastmod>2023-02-08</lastmod>
+    
   </url>
   
   <url>
     <loc>https://www.meng.me/posts/23180.html</loc>
     
-    <lastmod>2022-12-21</lastmod>
+    <lastmod>2023-02-08</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/posts/23045.html</loc>
+    
+    <lastmod>2023-02-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/posts/56872.html</loc>
+    
+    <lastmod>2023-02-08</lastmod>
+    
   </url>
   
   <url>
@@ -24,17 +48,6 @@
     
     <lastmod>2022-12-21</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/friends/index.html</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
   <url>
@@ -42,8 +55,6 @@
     
     <lastmod>2022-12-18</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
   <url>
@@ -51,26 +62,6 @@
     
     <lastmod>2022-12-18</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/posts/23045.html</loc>
-    
-    <lastmod>2022-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/laboratory/index.html</loc>
-    
-    <lastmod>2022-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
   <url>
@@ -78,8 +69,6 @@
     
     <lastmod>2022-12-16</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
   <url>
@@ -87,41 +76,12 @@
     
     <lastmod>2022-12-13</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/about/index.html</loc>
-    
-    <lastmod>2022-12-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/posts/56872.html</loc>
-    
-    <lastmod>2022-12-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/photography/index.html</loc>
-    
-    <lastmod>2022-12-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
 
   <url>
     <loc>https://www.meng.me/</loc>
-    <lastmod>2023-02-07</lastmod>
+    <lastmod>2023-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,46 +89,46 @@
   
   <url>
     <loc>https://www.meng.me/tags/Alist/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/tags/NPM/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/tags/ubuntu/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/2023/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/tags/NPM/</loc>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.meng.me/tags/ubuntu/</loc>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 
   
   <url>
     <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2023-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 </urlset>

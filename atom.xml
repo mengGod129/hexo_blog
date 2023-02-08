@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>MENG.ME</title>
+  
+  
+  <link href="https://www.meng.me/atom.xml" rel="self"/>
+  
+  <link href="https://www.meng.me/"/>
+  <updated>2023-02-08T06:50:39.360Z</updated>
+  <id>https://www.meng.me/</id>
+  
+  <author>
+    <name>Meng</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023新年快乐（阳历）</title>
+    <link href="https://www.meng.me/posts/30587.html"/>
+    <id>https://www.meng.me/posts/30587.html</id>
+    <published>2022-12-31T16:00:00.000Z</published>
+    <updated>2023-02-08T06:50:39.360Z</updated>
+    
+    <content type="html"><![CDATA[<div id="player_263ee332f3ea5384"></div><script type="text/javascript" src="https://npm.elemecdn.com/dplayer/dist/DPlayer.min.js"></script><script type="text/javascript">var player = new DPlayer({    container: document.getElementById('player_263ee332f3ea5384'),    video: {        url: 'https://npm.elemecdn.com/mengblog@1.0.5/video/2023.MP4',        type: 'auto'      }});</script><p>&nbsp;</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">
+&lt;div id=&quot;player_263ee332f3ea5384&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://npm.elemecdn.com/dplayer/dist/DPlayer.min.js&quot;&gt;&lt;/script</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="2023" scheme="https://www.meng.me/tags/2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu挂载新硬盘（大于2T）</title>
+    <link href="https://www.meng.me/posts/23180.html"/>
+    <id>https://www.meng.me/posts/23180.html</id>
+    <published>2022-12-21T04:26:04.000Z</published>
+    <updated>2023-02-08T04:57:01.677Z</updated>
+    
+    <content type="html"><![CDATA[<p>家里又添新设备，新购了一台物理服务器，用来跑python、智能家居总控，同时也能当作NAS使用。<br>之前就装了一个固态，随着算法训练量增加，硬盘不够用了，买了张4T的机械当数据盘，挂载用起来。<br><img src="/postsImages/ubuntu-disk-1.png" alt="image-1666838650203"></p><span id="more"></span><h3 id="查看当前硬盘配置"><a href="#查看当前硬盘配置" class="headerlink" title="查看当前硬盘配置"></a>查看当前硬盘配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure><p><img src="/postsImages/ubuntu-disk-1.png" alt="image-1666838650203"><br>这里可以看见一块3.64TiB的盘，下面335.35GiB的是已经在使用的。</p><h3 id="使用fdisk命令来创建新的分区"><a href="#使用fdisk命令来创建新的分区" class="headerlink" title="使用fdisk命令来创建新的分区"></a>使用fdisk命令来创建新的分区</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk /dev/sda //(名字别搞错了)</span><br></pre></td></tr></table></figure><p><img src="/postsImages/ubuntu-disk-2.png" alt="image-1666838790713"></p><p>1、输入 m 查看帮助<br><img src="/postsImages/ubuntu-disk-3.png" alt="image-1666838830230"></p><p>2、于我这里的硬盘大于 2TB，所以不能直接新建分区，需要先增加一个 GPT 标签。小于 2TB 的硬盘不需要这个操作。输入 g 增加<br><img src="/postsImages/ubuntu-disk-4.png" alt="image-1666838897291"></p><p>3、输入 F 可以看到没有分区的（注意大小写）<br><img src="/postsImages/ubuntu-disk-5.png" alt="image-1666838977405"></p><blockquote><p>这里可以看到我们之前那块4T的盘没有分区。</p></blockquote><p>4、输入 n 新建一个分区。这里开始和结束都使用默认的即可，这样整块硬盘都会被分进去，如果想自己定义大小，那么自己输入大小即可。<br><img src="/postsImages/ubuntu-disk-6.png" alt="image-1666839044685"></p><p>5、然后我们再次输入 F 确认下，这里就可以看到所有的盘都分区了。<br><img src="/postsImages/ubuntu-disk-7.png" alt="image-1666838939863"></p><p>6、输入 v 确认下，没有错误就 w 保存。<br><img src="/postsImages/ubuntu-disk-8.png" alt="image-1666839142265"></p><h3 id="格式化硬盘"><a href="#格式化硬盘" class="headerlink" title="格式化硬盘"></a>格式化硬盘</h3><p>到这里新增分区就结束了，这时我们需要格式化硬盘：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/sda</span><br></pre></td></tr></table></figure><p><img src="/postsImages/ubuntu-disk-9.png" alt="image-1666839391340"><br>格式化需要一点点时间，输入 y 后等待done即可。</p><h3 id="挂载分区。"><a href="#挂载分区。" class="headerlink" title="挂载分区。"></a>挂载分区。</h3><ul><li>我是新建了一个data目录用来挂载分区：<code>sudo mkdir data</code></li><li>挂载到/data上：<code>sudo mount /dev/sda /data</code></li><li>然后我们使用<code>df -h</code>查看下当前硬盘<br><img src="/postsImages/ubuntu-disk-10.png" alt="image-1666839664335"><br>可以看到，/dev/sda已经挂载到了/data目录。截止目前，临时挂载已经完成了。</li></ul><h3 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h3><blockquote><p>如果你不进行这一步，重启后硬盘挂载会失效。</p></blockquote><ul><li>编辑<code>/etc/fstab</code>文件：<code>sudo vim /etc/fstab</code></li><li>增加：<code>/dev/sda /data ext4 defaults 0 0</code></li></ul><p>然后保存退出即可，至此，所有步骤完成。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;家里又添新设备，新购了一台物理服务器，用来跑python、智能家居总控，同时也能当作NAS使用。&lt;br&gt;之前就装了一个固态，随着算法训练量增加，硬盘不够用了，买了张4T的机械当数据盘，挂载用起来。&lt;br&gt;&lt;img src=&quot;/postsImages/ubuntu-disk-1.png&quot; alt=&quot;image-1666838650203&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+    <category term="ubuntu" scheme="https://www.meng.me/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo部署至云服务器（Git配置）</title>
+    <link href="https://www.meng.me/posts/7714.html"/>
+    <id>https://www.meng.me/posts/7714.html</id>
+    <published>2022-12-18T12:51:31.000Z</published>
+    <updated>2022-12-21T04:27:46.772Z</updated>
+    
+    <content type="html"><![CDATA[<p>先给大家看个日志：<br><img src="/postsImages/hexo-git-1.jpg" alt="image"><br>一定要注意，安全无小事，密码切勿使用安全级别较低的密码。</p><span id="more"></span><p>因为我只是搭建git服务测试，所以使用的密码很简单，他就成功登录上来了。<br>随后，这个人又尝试了gitlab、emqx、mc等等常用用户名登录。<br><img src="/postsImages/hexo-git-2.jpg" alt="image"><br>我是用一台新服务器搭建测试，还好服务器没有什么资料等，而且此用户也是没有root权限的，之所以会发现这个问题还是因为腾讯云的预警。<br><img src="/postsImages/hexo-git-3.jpg" alt="image"><br>经过工单咨询和腾讯云工程师进一步确认得知：<br>1、确认服务器被入侵且存在异常脚本程序。<br>2、确认服务器内存在挖矿相关病毒程序。<br>3、确认服务器正在请求高危命令。<br>以上就不展开说了，所以各位密码一定要使用高强度密码，哪怕是自己忘记需要重置密码，其实这也是变相的定期修改密码。<br>好了，正文开始：</p><hr><h2 id="本地准备"><a href="#本地准备" class="headerlink" title="本地准备"></a>本地准备</h2><p>相信大家都会把hexo部署至github，本文的思路是一样的，在云服务器建立git仓库用于存储public代码，然后通过nginx指定此目录来访问。</p><h3 id="生成ssh密钥"><a href="#生成ssh密钥" class="headerlink" title="生成ssh密钥"></a>生成ssh密钥</h3><p>请确认自己有没有生成ssh密钥，如果没有则执行一下命令：</p><blockquote><p>查看有没有 ~/.ssh 这个文件夹，其中id_rsa.pub则为公钥。<br>windows用户在：<code>C:\Users\yourname\.ssh</code></p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的的邮箱&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;你的的邮箱&quot;</span><br></pre></td></tr></table></figure><h2 id="服务器搭建"><a href="#服务器搭建" class="headerlink" title="服务器搭建"></a>服务器搭建</h2><h3 id="root账号操作部分"><a href="#root账号操作部分" class="headerlink" title="root账号操作部分"></a>root账号操作部分</h3><p>1、切换到root账号</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure><p>如果你登录的就是root账号则无需切换。<br>2、 安装git<br>请先检查是否安装git，如果安装了就不用安装了。</p><blockquote><p>执行<code>git --version</code>，如果提醒git command not found就是没安装</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure><p>3、 创建git账户并设置密码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure><blockquote><p>小白提醒：设置密码时，密码时不显示的，不是你键盘坏了。new password后他会提示你再次输入的，也是一样的。</p></blockquote><ol start="4"><li>赋予权限<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 /etc/sudoers</span><br></pre></td></tr></table></figure>5、 编辑 /etc/sudoers 文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>在<code>root ALL=(ALL) ALL</code>下一行加入：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git     ALL=(ALL)     ALL</span><br></pre></td></tr></table></figure>6、 把权限改回来<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 /etc/sudoers</span><br></pre></td></tr></table></figure></li></ol><h3 id="git账号操作部分"><a href="#git账号操作部分" class="headerlink" title="git账号操作部分"></a>git账号操作部分</h3><p>1、创建.ssh文件夹</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br></pre></td></tr></table></figure><p>2、创建git密钥</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><p>3、复制一份公钥</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp id_rsa.pub authorized_keys</span><br></pre></td></tr></table></figure><p>4、修改权限</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure><p>5、上传本地公钥<br>把本文第一步生成的<code>id_rsa.pub</code>内容拷贝到服务器的<code>authorized_keys</code>文件末尾即可。<br>6、本地cmd测试<br>你在本地打开命令行工具输入：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@云服务器的公网IP</span><br></pre></td></tr></table></figure><p>免密登录即ok</p><h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><blockquote><p>注意：这里依然是git账号操作</p></blockquote><p>1、初始化git仓库<br>创建位置自己选择，我这演示创建在<code>/home/git</code>下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">git init --bare mengblog.git</span><br></pre></td></tr></table></figure><p>2、创建git钩子</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/mengblog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><p>输入以下内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --work-tree=/home/git/blog --git-dir=/home/git/mengblog.git checkout -f</span><br></pre></td></tr></table></figure><p>这里的目录自行选择，我这里是<code>/home/git/blog</code><br>3、设置文件可执行权限</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/mengblog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><h3 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h3><p>这一步只需要修改nginx配置中相应的server服务：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root /home/git/blog;</span><br></pre></td></tr></table></figure><h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><p>其实这里就简单了，和github一样，把_config.yml文件中deploy&gt;repo地址改成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@云服务器公网IP:/home/git/mengblog.git</span><br></pre></td></tr></table></figure><p>然后<code>hexo d</code>就行了</p><h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>到这里你只需要去访问nginx相应server绑定的域名即可。<br>在上一步中，<code>hexo d</code>可能会出现被拒绝等问题，如果你按照文章一步一步走的，那可能是在账号使用那一块出现了问题。<br>注意你的<code>/home/git/blog</code>所有者是不是<code>git</code>，如果不是请修改成<code>git</code></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;先给大家看个日志：&lt;br&gt;&lt;img src=&quot;/postsImages/hexo-git-1.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;一定要注意，安全无小事，密码切勿使用安全级别较低的密码。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NPM包发布、更新、撤销</title>
+    <link href="https://www.meng.me/posts/23045.html"/>
+    <id>https://www.meng.me/posts/23045.html</id>
+    <published>2022-12-16T06:19:44.000Z</published>
+    <updated>2023-02-08T04:56:38.952Z</updated>
+    
+    <content type="html"><![CDATA[<p>随着jsdelivr被墙，国外各个CDN链接访问速度又太慢，自组CDN仓库变得有一定的必要。<br>其实国内一些大厂有CDN仓库，但是收录的大部分都是主流的仓库，自己的一些静态静态还是需要一个高速的CDN仓库来托管。<br>购买云服务、cos等自建CDN库是一种办法，但是存在一定的费用，这篇文章记录利用NPM发布仓库并访问的方案。<br><img src="/postsImages/NPMcdn-6.png" alt="image"></p><span id="more"></span><h1 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="新建本地仓库"><a href="#新建本地仓库" class="headerlink" title="新建本地仓库"></a>新建本地仓库</h3><p>在本地新建一个文件夹，用于存放仓库静态资源。</p><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 你新建的仓库目录</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure><p>按照提示进行对应键入即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;mengcdn&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;CDN warehouse used by meng.me&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;Meng.me&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Is this OK? (yes)</span><br></pre></td></tr></table></figure><p>如下图，已经用红框标出键入部分：<br><img src="/postsImages/NPMcdn-1.png" alt="image"></p><h2 id="发布-1"><a href="#发布-1" class="headerlink" title="发布"></a>发布</h2><h3 id="创建NPM账号"><a href="#创建NPM账号" class="headerlink" title="创建NPM账号"></a>创建NPM账号</h3><p>如果你没有NPM账号，你需要先注册一个</p><blockquote><p>注意：注册后验证会发送一个OTP code，一定要验证才能发布。</p></blockquote><p><img src="/postsImages/NPMcdn-2.png" alt="image"></p><h3 id="登录NPM账号"><a href="#登录NPM账号" class="headerlink" title="登录NPM账号"></a>登录NPM账号</h3><p>先登录你的NPM账号</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login</span><br></pre></td></tr></table></figure><p>现在请使用<code>npm login</code>，目前也可以使用<code>npm adduser</code>，注意：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm WARN adduser `adduser` will be split into `login` and `register` in a future version. `adduser` will become an alias of `register`. `login` (currently an alias) will become its own command.</span><br></pre></td></tr></table></figure><p>在此你可能遇到以下错误：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! code E403</span><br><span class="line">npm ERR! 403 403 Forbidden - PUT https://registry.npmmirror.com/-/user/org.couchdb.user:menggod - [FORBIDDEN] Public registration is not allowed</span><br><span class="line">npm ERR! 403 In most cases, you or one of your dependencies are requesting</span><br><span class="line">npm ERR! 403 a package version that is forbidden by your security policy, or</span><br><span class="line">npm ERR! 403 on a server you do not have access to.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     /Users/meng/.npm/_logs/2022-12-16T06_52_01_553Z-debug-0.log</span><br></pre></td></tr></table></figure><p>此时你可能设置了其他镜像，将其切回即可正确完成登录操作：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure><p>此时再进行<code>npm login</code>操作，会再次验证OTP code，在邮件中查看键入即可。<br><img src="/postsImages/NPMcdn-3.png" alt="image"></p><h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure><p><img src="/postsImages/NPMcdn-4.png" alt="image"><br>至此发布已完成，可以登录NPM查看到了。</p><h2 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h2><p>通过jsdelivr访问：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/npm/(your packagename)@(version)/(file)</span><br></pre></td></tr></table></figure><p>例如：<br><a href="https://cdn.jsdelivr.net/npm/mengblog@1.0.0/about.txt">https://cdn.jsdelivr.net/npm/mengblog@1.0.0/about.txt</a><br>访问速度慢可以尝试替代方案，可自行在百度寻找，例如：<br><a href="https://cdn.bilicdn.tk/npm/mengblog@1.0.0/about.txt">https://cdn.bilicdn.tk/npm/mengblog@1.0.0/about.txt</a><br>如果有需要你也可以使用我的仓库：<a href="https://cdn.jsdelivr.net/npm/mengblog/">mengblog</a><br>如果仓库没有你想要的内容，你也不想发布，我可以帮到你：<a href="https://www.meng.me/message/">请给我留言注明你需要的资源</a></p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol><li><p>no_perms Private mode enable, only admin can publish this module<br>这是因为镜像设置成淘宝镜像了，设置回来即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure></li><li><p>npm publish failed put 500 unexpected status code 401<br>一般是没有登录，重新登录一下 npm login 即可</p></li><li><p>npm ERR! you do not have permission to publish “your module name”. Are you logged in as the correct user?<br>包名被占用，改个包名即可。最好在官网查一下是否有包名被占用，之后再重命名</p></li><li><p>you must verify your email before publishing a new package<br>邮箱未验证，去官网验证一下邮箱</p></li></ol><h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><h2 id="修改版本号"><a href="#修改版本号" class="headerlink" title="修改版本号"></a>修改版本号</h2><p>方法一：在上节说到的初始化目录中找到<code>package.json</code>，修改<code>version</code>参数。<br>方法二：当然你也可以使用命令<code>npm version</code>自动更新版本号。<br><code>npm version [option]</code><br>option选项如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">major：主版本号（大版本）[2.0.0]</span><br><span class="line">minor：次版本号（小更新）[1.1.0]</span><br><span class="line">patch：补丁号（补丁）[1.0.1]</span><br><span class="line">premajor：预备主版本[2.0.0-0]</span><br><span class="line">preminor: 预备次版本[1.1.0-0]</span><br><span class="line">prepatch：预补丁版本[1.0.1-0]</span><br><span class="line">prerelease：预发布版本[1.0.1-0]</span><br></pre></td></tr></table></figure><p>执行对应 npm version [option] 命令后可以在 package.json 文件中看到对应版本。</p><h2 id="发布-2"><a href="#发布-2" class="headerlink" title="发布"></a>发布</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure><blockquote><p>这个就不放图了，很简单就是更新下版本号然后发布就行了。</p></blockquote><p>至此更新已完成，可以登录NPM查看到了。</p><h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish projectName --force</span><br></pre></td></tr></table></figure><p>撤销指定版本：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish projectName@version --force</span><br></pre></td></tr></table></figure><p>例如我需要撤销刚刚发布的1.0.3，如图：<br><img src="/postsImages/NPMcdn-5.png" alt="image"></p><blockquote><p>npm 官方对撤销已发布的包说明:</p><ul><li>不允许撤销发布已经超过 24 小时的包，撤销发布 24 小时内的包需要加 –force 参数</li><li>撤销之前发布的包，再次发布的时候不能与之前被撤销的包的名称/版本其中之一相同，因为这两者构成的唯一性已经被占用，官方并没有随着撤销而删除</li></ul></blockquote>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;随着jsdelivr被墙，国外各个CDN链接访问速度又太慢，自组CDN仓库变得有一定的必要。&lt;br&gt;其实国内一些大厂有CDN仓库，但是收录的大部分都是主流的仓库，自己的一些静态静态还是需要一个高速的CDN仓库来托管。&lt;br&gt;购买云服务、cos等自建CDN库是一种办法，但是存在一定的费用，这篇文章记录利用NPM发布仓库并访问的方案。&lt;br&gt;&lt;img src=&quot;/postsImages/NPMcdn-6.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+    <category term="NPM" scheme="https://www.meng.me/tags/NPM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AList+Aria2+AriaNg私盘利器</title>
+    <link href="https://www.meng.me/posts/56872.html"/>
+    <id>https://www.meng.me/posts/56872.html</id>
+    <published>2022-12-10T07:27:16.000Z</published>
+    <updated>2023-02-08T04:56:06.852Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p>食用前请确保你已经安装了Docker，并掌握了docker的基础知识。<br><img src="/postsImages/alist-5.png" alt="image"></p></blockquote><span id="more"></span><h3 id="AList安装"><a href="#AList安装" class="headerlink" title="AList安装"></a>AList安装</h3><blockquote><p>官方文档地址：<a href="https://alist.nn.ci/zh/guide/install/docker.html">https://alist.nn.ci/zh/guide/install/docker.html</a></p></blockquote><p>docker run命令</p><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name=<span class="string">&quot;alist&quot;</span> xhofe/alist:latest</span></span><br></pre></td></tr></table></figure><p>在此，建议使用-v指令映射一个地址出来用于本地存储的配置地址<br><img src="/postsImages/alist-1.png" alt="image"><br>运行后，访问ip:端口即可访问。后台管理员账号密码查看：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it alist ./alist admin</span><br></pre></td></tr></table></figure><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><p>1、failed get storage: can’t find storage with rawPath: /<br>这是说明你还没配置存储，管理员登录后台配置存储后即可。</p><h3 id="Aria2安装"><a href="#Aria2安装" class="headerlink" title="Aria2安装"></a>Aria2安装</h3><p>拉取镜像：<code>docker pull p3terx/aria2-pro</code><br>启动容器：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name aria2 \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">--log-opt max-size=1m \</span><br><span class="line">-e PUID=$UID \</span><br><span class="line">-e PGID=$GID \</span><br><span class="line">-e UMASK_SET=022 \</span><br><span class="line">-e RPC_SECRET=你的rpc密匙 \</span><br><span class="line">-e RPC_PORT=6800 \</span><br><span class="line">-e LISTEN_PORT=6888 \</span><br><span class="line">-p 6800:6800 \</span><br><span class="line">-p 6888:6888 \</span><br><span class="line">-p 6888:6888/udp \</span><br><span class="line">-v /mnt/aria2/config:/config \</span><br><span class="line">-v /var/www/resource:/downloads \</span><br><span class="line">p3terx/aria2-pro</span><br></pre></td></tr></table></figure><blockquote><p><code>RPC_SECRET</code>设置你的rpc密码<br>这里我把/downloads映射和AList一样的地址，下载后的文件就可以直接在AList中看见了。</p></blockquote><h3 id="AriaNg安装"><a href="#AriaNg安装" class="headerlink" title="AriaNg安装"></a>AriaNg安装</h3><p>拉取镜像：<code>docker pull p3terx/ariang</code><br>启动容器：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name ariang \</span><br><span class="line">--log-opt max-size=1m \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">-p 6880:6880 \</span><br><span class="line">p3terx/ariang</span><br></pre></td></tr></table></figure><p>运行后，访问ip:端口即可访问。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote><p>使用我也不知道写什么，自己去探索有趣的功能或许更有意义！这里写几点基本的配置或者错误吧。</p></blockquote><p>1、Aria2状态未连接<br><img src="/postsImages/alist-2.png" alt="image-1666170697262"><br>在AriaNg设置 &gt; RPC中填写你的Aria2 PRC地址，随后刷新页面，Aria2状态为已连接即可。</p><p>2、下载出现:<code>发生错误(16)-文件创建或删除已有文件失败.</code><br><img src="/postsImages/alist-3.png" alt="image-1666170994513"><br>你可以尝试下chmod 777 xxx提权，看是不是权限的文件。</p><blockquote><p>xxx为下载地址，这个地址是在docker run Aria2时映射的地址。例如我的就是<code>/var/www/resource</code><br>这里在百度找了一个mp4地址测试：<code>http://vjs.zencdn.net/v/oceans.mp4</code></p></blockquote><p>3、忘记了docker映射地址</p><blockquote><p>你也是个人才。。。刚部署就忘了</p></blockquote><p>执行命令：<code>docker inspect alist | grep Mounts -A 20</code></p><blockquote><p>alist为容器名，如果你不是这个名字你就换成自己的name</p></blockquote><p>4、Alist和Aria2联动<br>这个在安装一节中讲过了，作用就是Aria2下载后直接就到网盘目录了。<br>其实也很简单，就是Alist地址和Aria2下载地址配置成一样就行。<br>我这里在docker中映射到的都是：<code>/var/www/resource</code><br>在Alist中配置本机存储如下：<br><img src="/postsImages/alist-4.png" alt="image-1666171526901"></p><blockquote><p>注意，这里的跟文件夹路径是docker容器中的地址，否则会提示找不到。</p></blockquote><p>5、Alist配置Aria2<br>在设置 &gt; 其他 中配置Aria2，输入地址和密匙即可。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;使用Docker容器技术运行AList+Aria2+AriaNg，实现网盘功能和强大的下载神器！&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;食用前请确保你已经安装了Docker，并掌握了docker的基础知识。&lt;br&gt;&lt;img src=&quot;/postsImages/alist-5.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+    <category term="Alist" scheme="https://www.meng.me/tags/Alist/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://www.meng.me/posts/16107.html"/>
+    <id>https://www.meng.me/posts/16107.html</id>
+    <published>2022-12-09T12:22:20.488Z</published>
+    <updated>2022-12-13T03:09:13.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to MENG.ME<br>本博客使用HEXO程序，模板使用Aomori。<br>目前正在二次修改/美化此模板，欢迎大家提出意见建议。</p><p><a href="https://www.meng.me/about/">about me</a></p><p><a href="https://www.meng.me/friends/">be friends with me</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to MENG.ME&lt;br&gt;本博客使用HEXO程序，模板使用Aomori。&lt;br&gt;目前正在二次修改/美化此模板，欢迎大家提出意见建议。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.meng.me/about/&quot;&gt;about me&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+  </entry>
+  
+</feed>
