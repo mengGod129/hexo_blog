@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.meng.me/404.html</loc>
+    
+    <lastmod>2023-02-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/friends/index.html</loc>
     
     <lastmod>2023-02-08</lastmod>
@@ -51,13 +58,6 @@
   </url>
   
   <url>
-    <loc>https://www.meng.me/404.html</loc>
-    
-    <lastmod>2022-12-18</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.meng.me/ipfs-404.html</loc>
     
     <lastmod>2022-12-18</lastmod>
@@ -81,36 +81,36 @@
 
   <url>
     <loc>https://www.meng.me/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://www.meng.me/tags/Alist/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <loc>https://www.meng.me/tags/2023/</loc>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.meng.me/tags/2023/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <loc>https://www.meng.me/tags/Alist/</loc>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/ubuntu/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/NPM/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -118,15 +118,15 @@
 
   
   <url>
-    <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2023-02-08</lastmod>
+    <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
+    <lastmod>2023-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
