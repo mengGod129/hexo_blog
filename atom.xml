@@ -6,7 +6,7 @@
   <link href="https://www.meng.me/atom.xml" rel="self"/>
   
   <link href="https://www.meng.me/"/>
-  <updated>2023-02-08T06:50:39.360Z</updated>
+  <updated>2023-02-09T08:03:59.674Z</updated>
   <id>https://www.meng.me/</id>
   
   <author>
@@ -17,28 +17,23 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2023新年快乐（阳历）</title>
+    <title>2022年终总结</title>
     <link href="https://www.meng.me/posts/30587.html"/>
     <id>https://www.meng.me/posts/30587.html</id>
-    <published>2022-12-31T16:00:00.000Z</published>
-    <updated>2023-02-08T06:50:39.360Z</updated>
+    <published>2023-01-21T16:00:00.000Z</published>
+    <updated>2023-02-09T08:03:59.674Z</updated>
     
-    <content type="html"><![CDATA[<div id="player_263ee332f3ea5384"></div><script type="text/javascript" src="https://npm.elemecdn.com/dplayer/dist/DPlayer.min.js"></script><script type="text/javascript">var player = new DPlayer({    container: document.getElementById('player_263ee332f3ea5384'),    video: {        url: 'https://npm.elemecdn.com/mengblog@1.0.5/video/2023.MP4',        type: 'auto'      }});</script><p>&nbsp;</p>]]></content>
+    <content type="html"><![CDATA[<p>时间过得真快～<br><img src="/postsImages/2022zongjie-9-12.png" alt="image"></p><span id="more"></span><h2 id="🦠新冠疫情"><a href="#🦠新冠疫情" class="headerlink" title="🦠新冠疫情"></a>🦠新冠疫情</h2><p>新冠疫情开始于2019年，在2022年12月5日宣布放开，通信行程卡于2022年12月13日0时正式下线。<br><img src="/postsImages/2022zongjie-1.png" alt="image"><br>疫情初期的恐慌还历历在目，随着感染人数的暴增，口罩等防疫物品都被抢空，武汉封城，火神山医院拔地而起，从方案设计到建成交付仅用10天，被誉为中国速度。相关资料可参考：<a href="https://baike.baidu.com/item/%E6%AD%A6%E6%B1%89%E7%81%AB%E7%A5%9E%E5%B1%B1%E5%8C%BB%E9%99%A2/24302076?fr=aladdin">武汉火神山医院百度百科</a><br>国内疫情控制的很好，辉瑞疫苗也在开足马力生产并已经在英国、美国投入使用，到2022年年底，随着疫情放开，经过大规模的感染后，现在疫情就像消失了一般。</p><h2 id="💻数字生活"><a href="#💻数字生活" class="headerlink" title="💻数字生活"></a>💻数字生活</h2><p>2022拥有了自己的git库，文件管理系统，影视系统…</p><h3 id="Ctrl-C-V"><a href="#Ctrl-C-V" class="headerlink" title="Ctrl C/V"></a>Ctrl C/V</h3><p><img src="/postsImages/2022zongjie-7.png" alt="image"><br>其实在github上的contributions基本上都是博客的一些变化，代码提交很杂，在本地服务器、gitee、gitlab都有提交，没有一个统一的统计，要是有一个统一的Contributions Calendar来记录就好了。</p><h3 id="物理服务器"><a href="#物理服务器" class="headerlink" title="物理服务器"></a>物理服务器</h3><p>2022添置了很多的设备，本身自己是程序员，也有着一个科技梦。随着手上的项目增多，本服务器成本也大大增加，所以购买了一个物理服务器，在局域网中使用，用于项目开发和测试，以及智能家居的总控。</p><h3 id="日用设备"><a href="#日用设备" class="headerlink" title="日用设备"></a>日用设备</h3><p>随着14的灵动岛出现，手上的iPhone12突然不香了，所以就换了iPhone14，同时购买了AirPods Pro、iPad Pro。MacBook Pro M1目前还是很强，效率完全不受影响。但是偶尔想玩游戏了mac并不能实现，所以自己组装了一台Windows电脑（玩游戏专用）。<br><img src="/postsImages/2022zongjie-2.png" alt="image"></p><h3 id="nas"><a href="#nas" class="headerlink" title="nas"></a>nas</h3><p>想着很多东西要存，然后物理机器又跑了很多东西，所以购买了一个nas来存放一些私密性的东西和普通的研究。购买的是极空间的新Z4，发现限制是真的多，docker的使用也处处碰壁，现在已经有点吃灰了…<br>目前还使用了相册备份，docker跑了qbittorren、nas-tools、alist，目前用的多的还是alist吧，挺好的一个程序。nas-tools搭配qbittorren下载影片供媒体库使用，极空间自带内网穿透，这一点的体验还是相当不错的。<br>搭建了一个旁路网关，docker跑了Clash，全家wifi所有设备都可以走规则了，不用单独安装使用了。<br><img src="/postsImages/2022zongjie-3.png" alt="image"><br><img src="/postsImages/2022zongjie-3-1.png" alt="image"></p><h3 id="car"><a href="#car" class="headerlink" title="car"></a>car</h3><p>买了一台车（2022.5.20），<del>其实我还是喜欢长安UNI系列</del><br><img src="/postsImages/2022zongjie-4.png" alt="image"><br><img src="/postsImages/2022zongjie-5.png" alt="image"></p><h3 id="百万"><a href="#百万" class="headerlink" title="百万"></a>百万</h3><p><del>哈哈哈，傻狗</del><br><img src="/postsImages/2022zongjie-6.png" alt="image"><br><img src="/postsImages/2022zongjie-6-1.png" alt="image"></p><h3 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h3><p>我玩的游戏：CF、PUBG、APEX、GTA系列、CSGO、永劫无间、我的世界、王者荣耀、魔兽、Cities: Skylines…<br>目前喜欢的：GTA5、CSGO、我的世界、魔兽、Cities: Skylines。<br>王者荣耀以前很喜欢，后来就没怎么玩了，22年和朋友玩了一个月上王者了，又退了…<br><img src="/postsImages/2022zongjie-8.png" alt="image"><br><img src="/postsImages/2022zongjie-8-1.png" alt="image"><br><img src="/postsImages/2022zongjie-8-2.png" alt="image"><br><img src="/postsImages/2022zongjie-8-3.png" alt="image"></p><h2 id="💰公司"><a href="#💰公司" class="headerlink" title="💰公司"></a>💰公司</h2><p>在打工之余创办了一家公司，已投资10万元，业务以线上为主，业务准备做自媒体站和微信小程序，希望有所成绩吧！</p><h2 id="🪂玩玩玩"><a href="#🪂玩玩玩" class="headerlink" title="🪂玩玩玩"></a>🪂玩玩玩</h2><p><img src="/postsImages/2022zongjie-9.png" alt="image"><br><img src="/postsImages/2022zongjie-9-1.png" alt="image"><br><img src="/postsImages/2022zongjie-9-2.png" alt="image"><br><img src="/postsImages/2022zongjie-9-3.png" alt="image"><br><img src="/postsImages/2022zongjie-9-4.png" alt="image"><br><img src="/postsImages/2022zongjie-9-5.png" alt="image"><br><img src="/postsImages/2022zongjie-9-6.png" alt="image"><br><img src="/postsImages/2022zongjie-9-7.png" alt="image"><br><img src="/postsImages/2022zongjie-9-8.png" alt="image"><br><img src="/postsImages/2022zongjie-9-9.png" alt="image"><br><img src="/postsImages/2022zongjie-9-10.png" alt="image"><br><img src="/postsImages/2022zongjie-9-11.png" alt="image"><br><img src="/postsImages/2022zongjie-9-13.png" alt="image"></p><div id="player_2022-1"></div><script type="text/javascript" src="https://npm.elemecdn.com/dplayer/dist/DPlayer.min.js"></script><script type="text/javascript">var player = new DPlayer({    container: document.getElementById('player_2022-1'),    video: {        url: 'https://npm.elemecdn.com/mengblog@1.0.7/video/2022zongjie-video-1.mp4',        type: 'auto'      }});</script><h2 id="🧨新年快乐"><a href="#🧨新年快乐" class="headerlink" title="🧨新年快乐"></a>🧨新年快乐</h2><div id="player_2022-2"></div><script type="text/javascript">var player = new DPlayer({    container: document.getElementById('player_2022-2'),    video: {        url: 'https://npm.elemecdn.com/mengblog@1.0.7/video/2022zongjie-video-2.mp4',        type: 'auto'      }});</script><p>&nbsp;</p>]]></content>
     
     
-      
-      
-    <summary type="html">
-&lt;div id=&quot;player_263ee332f3ea5384&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;https://npm.elemecdn.com/dplayer/dist/DPlayer.min.js&quot;&gt;&lt;/script</summary>
-      
+    <summary type="html">&lt;p&gt;时间过得真快～&lt;br&gt;&lt;img src=&quot;/postsImages/2022zongjie-9-12.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;</summary>
     
     
     
-    <category term="博客" scheme="https://www.meng.me/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
     
     
-    <category term="2023" scheme="https://www.meng.me/tags/2023/"/>
+    <category term="年终总结" scheme="https://www.meng.me/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
