@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#fff">
+
+<link rel="preload" href="https://npm.elemecdn.com/mengblog@1.0.6/fonts/Candyshop.otf" as="font" type="font/otf" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+
+
+
+
+
+
+  
+
+<link href="https://npm.elemecdn.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://npm.elemecdn.com/social-share.js@1.0.16/dist/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.0.13" rel="stylesheet" type="text/css" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=1.0.13">
+
+
+
+
+
+  <meta name="keywords" content="thingsboard," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="mengGod" type="application/atom+xml" />
+
+
+
+
+  <link href="https://npm.elemecdn.com/mengblog@1.0.2/css/waline.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+<meta name="description" content="mac m1编译thingsboard过程记录，虽说是mac m1为示例机器，但是windows也是一样的道理，只是架构部分不同。本机环境：JAVA：11、MAVEN3、NODE：18、YARN：1.22.19">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac M1 build Thingsboard">
+<meta property="og:url" content="https://www.meng.me/posts/31755.html">
+<meta property="og:site_name" content="mengGod">
+<meta property="og:description" content="mac m1编译thingsboard过程记录，虽说是mac m1为示例机器，但是windows也是一样的道理，只是架构部分不同。本机环境：JAVA：11、MAVEN3、NODE：18、YARN：1.22.19">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.meng.me/postsImages/thingsboardBuild/buildSuccess.jpg">
+<meta property="article:published_time" content="2023-07-29T07:42:52.000Z">
+<meta property="article:modified_time" content="2023-07-29T08:17:16.176Z">
+<meta property="article:author" content="Meng">
+<meta property="article:tag" content="thingsboard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.meng.me/postsImages/thingsboardBuild/buildSuccess.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '1.0.13',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false,"nft":null},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '12/9/2022 00:00:00',
+    site: {
+      title: '',
+      subtitle: '',
+      author: ''
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: true,
+      appID: 'HXO6DqdljSqx9Ez54lRRoIWR-gzGzoHsz',
+      appKey: 'fvBAGT1P9epqpCrUMQzPEe6N'
+    },
+    favicon: {
+      visibilitychange: false,
+      narmal: '/favicon.ico',
+      hidden: '/failure.ico',
+      show_text: '(/≧▽≦/)咦！又好了！',
+      hide_text: '(●—●)喔哟，崩溃啦！'
+    }
+  };
+</script>
+
+
+
+
+  <script type="text/javascript" src="https://npm.elemecdn.com/jquery/dist/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://npm.elemecdn.com/disqusjs@1.2.2/dist/disqus.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://www.meng.me/posts/31755.html"/>
+
+
+
+
+
+  <title>Mac M1 build Thingsboard | mengGod</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//cdn.staticfile.org/analytics.js/2.9.1/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" class="theme-darling">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fas fa-meteor"></i> <br />
+            
+            首页
+          </a>
+          
+        </li>
+      
+        
+        <li class="menu-item menu-item-实验室">
+          <a href="javascript:;" rel="section">
+            
+              <i class="menu-item-icon fas fa-magic"></i> <br />
+            
+            实验室
+          </a>
+          
+            <ul class="submenu submenu-实验室">
+              
+                
+                <li class="submenu-item submenu-item-监控">
+                  <a target="_blank" href="https://status.meng.me/" rel="section noopener">
+                    监控
+                  </a>
+                </li>
+              
+                
+                <li class="submenu-item submenu-item-kod私有云">
+                  <a target="_blank" href="https://kod.meng.me/" rel="section noopener">
+                    KOD私有云
+                  </a>
+                </li>
+              
+                
+                <li class="submenu-item submenu-item-jsdelivr">
+                  <a target="_blank" href="https://www.jsdelivr.com/package/npm/mengblog/" rel="section noopener">
+                    jsdelivr
+                  </a>
+                </li>
+              
+                
+                <li class="submenu-item submenu-item-minecraft">
+                  <a target="_blank" href="https://mc.meng.me/" rel="section noopener">
+                    Minecraft
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fas fa-archive"></i> <br />
+            
+            归档
+          </a>
+          
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fas fa-mars-stroke"></i> <br />
+            
+            后宫
+          </a>
+          
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fas fa-comment-dots"></i> <br />
+            
+            留言板
+          </a>
+          
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fas fa-heartbeat"></i> <br />
+            
+            关于我
+          </a>
+          
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+          </form>
+      </li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image:url(https://npm.elemecdn.com/mengblog@1.0.6/images/header-darling4.webp)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate-stroke" class="animate">
+            <span>
+                  <svg>
+                    <use xlink:href="#strokeH"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#strokei"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#stroke,"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#stroke "></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#strokeM"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#strokee"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#stroken"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#strokeg"></use>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <use xlink:href="#stroke!"></use>
+                  </svg>
+                </span>
+          </div>
+          <div id="animate" class="animate">
+            <span>
+                  <svg>
+                    <text id="strokeH">H</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="strokei">i</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="stroke,">,</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="stroke "> </text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="strokeM">M</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="strokee">e</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="stroken">n</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="strokeg">g</text>
+                  </svg>
+                </span><span>
+                  <svg>
+                    <text id="stroke!">!</text>
+                  </svg>
+                </span>
+          </div>
+          <div id="guide" class="guide">
+            <span>H</span><span>i</span><span>,</span><span> </span><span>M</span><span>e</span><span>n</span><span>g</span><span>!</span>
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <picture><source srcset="/images/avatar.webp" type="image/webp"><img loading="lazy" class="site-master-avatar scaleup" itemprop="image" src="/images/avatar.jpeg" alt="" /></picture>
+    <h2 class="site-master-description scaleup" itemprop="description">
+        写代码是热爱，写到世界充满爱！
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">07月</div>
+			<div class="post-day">29</div>
+	</div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.meng.me/posts/31755.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mengGod">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac M1 build Thingsboard</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-29T15:42:52+08:00">2023-07-29</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">•</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="far fa-file-word"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">2073</span>
+              
+
+              
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/31755.html" class="leancloud_visitors" data-flag-title="Mac M1 build Thingsboard">
+               <span class="post-meta-divider">•</span>
+               <span class="post-meta-item-icon">
+                 <i class="far fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">被</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span class="post-meta-item-text">人看爆</span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+      <div class="post-toc-content"><div class="post-toc-title">文章目录</div><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E4%BB%A3%E7%A0%81"><span class="nav-text">拉取代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6"><span class="nav-text">修改文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8Bpom-xml"><span class="nav-text">根目录下pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node%E5%92%8Cyarn%E7%89%88%E6%9C%AC"><span class="nav-text">node和yarn版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEnode%E3%80%81yarn%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-text">设置node、yarn镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#install-ui-ngx"><span class="nav-text">install ui-ngx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E7%BC%96%E8%AF%91"><span class="nav-text">开始编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E4%B8%80%EF%BC%9A"><span class="nav-text">错误一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E4%BA%8C"><span class="nav-text">错误二</span></a></li></ol></li></ol></div>
+      
+      
+
+      
+        <p>mac m1编译thingsboard过程记录，虽说是mac m1为示例机器，但是windows也是一样的道理，只是架构部分不同。<br>本机环境：JAVA：11、MAVEN3、NODE：18、YARN：1.22.19<br><picture><source srcset="/postsImages/thingsboardBuild/buildSuccess.webp" type="image/webp"><img loading="lazy" src="/postsImages/thingsboardBuild/buildSuccess.jpg" alt="image"></picture></p>
+<span id="more"></span>
+<h2 id="拉取代码"><a href="#拉取代码" class="headerlink" title="拉取代码"></a>拉取代码</h2><p>github地址：<a target="_blank" rel="noopener" href="https://github.com/thingsboard/thingsboard">https://github.com/thingsboard/thingsboard</a></p>
+<h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><h3 id="根目录下pom-xml"><a href="#根目录下pom-xml" class="headerlink" title="根目录下pom.xml"></a>根目录下pom.xml</h3><p>1、 文件内搜索：<code>$&#123;os.detected.classifier&#125;</code>，出现三处位置，将其更改为：<code>osx-aarch_64</code>。<br>2、 文件内搜索：<code>com.mycila</code>，出现两处位置，将其完整注释，具体注释内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mycila<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>license-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">header</span>&gt;</span>$&#123;main.dir&#125;/license-header-template.txt<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">owner</span>&gt;</span>The Thingsboard Authors<span class="tag">&lt;/<span class="name">owner</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.env<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.env<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.eslintrc<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.babelrc<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.jshintrc<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.gradle/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/nightwatch<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/README<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/LICENSE<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/banner.txt<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>node_modules/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/test/resources/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/vendor/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/font/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/sh/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>packaging/*/scripts/control/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>packaging/*/scripts/windows/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>packaging/*/scripts/init/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.log<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.current<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>.instance_id<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/main/scripts/control/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/main/scripts/windows/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>src/main/resources/public/static/rulenode/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.proto.js<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>docker/haproxy/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>docker/tb-node/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>ui/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.browserslistrc<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/yarn.lock<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.yarnrc<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/.angular/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.raw<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/*.patch<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/apache/cassandra/io/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>.run/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/NetworkReceive.java<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/lwm2m-registry/**<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">mapping</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">proto</span>&gt;</span>JAVADOC_STYLE<span class="tag">&lt;/<span class="name">proto</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">cql</span>&gt;</span>DOUBLEDASHES_STYLE<span class="tag">&lt;/<span class="name">cql</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">scss</span>&gt;</span>JAVADOC_STYLE<span class="tag">&lt;/<span class="name">scss</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">jsx</span>&gt;</span>SLASHSTAR_STYLE<span class="tag">&lt;/<span class="name">jsx</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tsx</span>&gt;</span>SLASHSTAR_STYLE<span class="tag">&lt;/<span class="name">tsx</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">conf</span>&gt;</span>SCRIPT_STYLE<span class="tag">&lt;/<span class="name">conf</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">gradle</span>&gt;</span>JAVADOC_STYLE<span class="tag">&lt;/<span class="name">gradle</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>check<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mycila<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>license-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="node和yarn版本"><a href="#node和yarn版本" class="headerlink" title="node和yarn版本"></a>node和yarn版本</h3><p>全局搜索<code>nodeVersion</code>，将<code>nodeVersion</code>和<code>yarnVersion</code>更改为自己电脑的版本。<br><code>node -v</code>、<code>yarn -v</code></p>
+<h2 id="设置node、yarn镜像源"><a href="#设置node、yarn镜像源" class="headerlink" title="设置node、yarn镜像源"></a>设置node、yarn镜像源</h2><p><code>npm config set registry registry.npm.taobao.org</code><br><code>yarn config set registry registry.npm.taobao.org</code></p>
+<h2 id="install-ui-ngx"><a href="#install-ui-ngx" class="headerlink" title="install ui-ngx"></a>install ui-ngx</h2><p><code>cd ui-ngx</code><br><code>yarn install</code></p>
+<h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><p><code>mvn install -Dmaven.test.skip=true</code></p>
+<ul>
+<li>ps：这是跳过测试的，所以截止这一步不需要搭建postgres、kafka等。</li>
+</ul>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+<li>直接上报错代码，更加直观。</li>
+</ul>
+<h3 id="错误一："><a href="#错误一：" class="headerlink" title="错误一："></a>错误一：</h3><p><code>The following artifacts could not be resolved: org.thingsboard:dao:jar:tests:3.5.1-SNAPSHOT (absent):</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Reactor Summary for Thingsboard 3.5.1-SNAPSHOT:</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] Thingsboard ........................................ SUCCESS [  0.113 s]</span><br><span class="line">[INFO] Netty MQTT Client .................................. SUCCESS [  0.450 s]</span><br><span class="line">[INFO] Thingsboard Server Commons ......................... SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Server Common Data ..................... SUCCESS [  0.489 s]</span><br><span class="line">[INFO] Thingsboard Server Common Utils .................... SUCCESS [  0.032 s]</span><br><span class="line">[INFO] Thingsboard Server Common Messages ................. SUCCESS [  2.516 s]</span><br><span class="line">[INFO] Thingsboard Actor system ........................... SUCCESS [  0.327 s]</span><br><span class="line">[INFO] Thingsboard Server Stats ........................... SUCCESS [  0.209 s]</span><br><span class="line">[INFO] Thingsboard Server Common Cluster API .............. SUCCESS [  6.500 s]</span><br><span class="line">[INFO] Thingsboard Server Queue components ................ SUCCESS [  1.521 s]</span><br><span class="line">[INFO] Thingsboard Server Common Cache .................... SUCCESS [  0.419 s]</span><br><span class="line">[INFO] Thingsboard Server Commons ......................... SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Server Common Transport components ..... SUCCESS [  2.013 s]</span><br><span class="line">[INFO] Thingsboard MQTT Transport Common .................. SUCCESS [  2.019 s]</span><br><span class="line">[INFO] Thingsboard HTTP Transport Common .................. SUCCESS [  0.313 s]</span><br><span class="line">[INFO] Thingsboard CoAP server ............................ SUCCESS [  0.384 s]</span><br><span class="line">[INFO] Thingsboard CoAP Transport Common .................. SUCCESS [  2.295 s]</span><br><span class="line">[INFO] Thingsboard LwM2M Transport Common ................. SUCCESS [  1.273 s]</span><br><span class="line">[INFO] Thingsboard SNMP Transport Common .................. SUCCESS [  0.383 s]</span><br><span class="line">[INFO] Thingsboard Server Common DAO API .................. SUCCESS [  0.573 s]</span><br><span class="line">[INFO] Thingsboard Server Remote Edge wrapper ............. SUCCESS [  2.972 s]</span><br><span class="line">[INFO] Thingsboard Server Version Control API ............. SUCCESS [  0.529 s]</span><br><span class="line">[INFO] Thingsboard Script Invoke Commons .................. SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Server Script invoke API ............... SUCCESS [  0.327 s]</span><br><span class="line">[INFO] Thingsboard Extensions ............................. SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Rule Engine API ........................ SUCCESS [  0.378 s]</span><br><span class="line">[INFO] Thingsboard Server JS Client for remote JS execution SUCCESS [  0.341 s]</span><br><span class="line">[INFO] Thingsboard Server DAO Layer ....................... SUCCESS [  3.426 s]</span><br><span class="line">[INFO] Thingsboard Rule Engine Components ................. SUCCESS [  1.949 s]</span><br><span class="line">[INFO] Thingsboard Server Transport Modules ............... SUCCESS [  0.002 s]</span><br><span class="line">[INFO] Thingsboard HTTP Transport Service ................. SUCCESS [ 44.298 s]</span><br><span class="line">[INFO] Thingsboard MQTT Transport Service ................. SUCCESS [ 16.300 s]</span><br><span class="line">[INFO] Thingsboard CoAP Transport Service ................. SUCCESS [ 15.375 s]</span><br><span class="line">[INFO] Thingsboard LwM2m Transport Service ................ SUCCESS [ 15.761 s]</span><br><span class="line">[INFO] Thingsboard SNMP Transport Service ................. SUCCESS [ 15.268 s]</span><br><span class="line">[INFO] ThingsBoard Server UI .............................. SUCCESS [02:02 min]</span><br><span class="line">[INFO] Thingsboard Server Tools ........................... SUCCESS [  0.451 s]</span><br><span class="line">[INFO] Thingsboard Rest Client ............................ SUCCESS [  0.579 s]</span><br><span class="line">[INFO] ThingsBoard Server Application ..................... FAILURE [  6.288 s]</span><br><span class="line">[INFO] ThingsBoard Microservices .......................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Docker Images .......................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Web UI Microservice .................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Version Control Executor ............... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Version Control Executor Microservice .. SKIPPED</span><br><span class="line">[INFO] ThingsBoard Node Microservice ...................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Transport Microservices ................ SKIPPED</span><br><span class="line">[INFO] ThingsBoard MQTT Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard HTTP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard COAP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard LWM2M Transport Microservice ........... SKIPPED</span><br><span class="line">[INFO] ThingsBoard SNMP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard JavaScript Executor Microservice ....... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Monitoring Service ..................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Monitoring Microservice ................ SKIPPED</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD FAILURE</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  04:28 min</span><br><span class="line">[INFO] Finished at: 2023-07-29T13:54:44+08:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal on project application: Could not resolve dependencies for project org.thingsboard:application:jar:3.5.1-SNAPSHOT: The following artifacts could not be resolved: org.thingsboard:dao:jar:tests:3.5.1-SNAPSHOT (absent): Could not find artifact org.thingsboard:dao:jar:tests:3.5.1-SNAPSHOT in taobao (https://maven.aliyun.com/repository/public) -&gt; [Help 1]</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span><br><span class="line">[ERROR] Re-run Maven using the -X switch to enable full debug logging.</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] For more information about the errors and possible solutions, please read the following articles:</span><br><span class="line">[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] After correcting the problems, you can resume the build with the command</span><br><span class="line">[ERROR]   mvn &lt;args&gt; -rf :application</span><br><span class="line"></span><br><span class="line">Process finished with exit code 1</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：<br>前往<a target="_blank" rel="noopener" href="https://repo.thingsboard.io/artifactory/libs-release-public/org/thingsboard/dao/3.5.1/">https://repo.thingsboard.io/artifactory/libs-release-public/org/thingsboard/dao/3.5.1/</a> 下载所需的包（注意版本），放到自己本地仓库下：<br><your maven repo>/org/thingsboard/dao/xxx/</p>
+<h3 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h3><p><code>Failed to execute goal com.github.eirslett:frontend-maven-plugin:1.12.0:yarn (yarn pkg) on project web-ui: Failed to run task: &#39;yarn run pkg&#39; failed. </code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">[INFO] &gt; Error! Not able to build for &#x27;linux&#x27; here, only for &#x27;macos&#x27;</span><br><span class="line">[INFO] error Command failed with exit code 2.</span><br><span class="line">[INFO] error Command failed with exit code 2.info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Reactor Summary for Thingsboard 3.5.1-SNAPSHOT:</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] Thingsboard ........................................ SUCCESS [  0.156 s]</span><br><span class="line">[INFO] Netty MQTT Client .................................. SUCCESS [  0.682 s]</span><br><span class="line">[INFO] Thingsboard Server Commons ......................... SUCCESS [  0.005 s]</span><br><span class="line">[INFO] Thingsboard Server Common Data ..................... SUCCESS [  0.586 s]</span><br><span class="line">[INFO] Thingsboard Server Common Utils .................... SUCCESS [  0.034 s]</span><br><span class="line">[INFO] Thingsboard Server Common Messages ................. SUCCESS [  1.992 s]</span><br><span class="line">[INFO] Thingsboard Actor system ........................... SUCCESS [  0.035 s]</span><br><span class="line">[INFO] Thingsboard Server Stats ........................... SUCCESS [  0.045 s]</span><br><span class="line">[INFO] Thingsboard Server Common Cluster API .............. SUCCESS [  6.209 s]</span><br><span class="line">[INFO] Thingsboard Server Queue components ................ SUCCESS [  0.334 s]</span><br><span class="line">[INFO] Thingsboard Server Common Cache .................... SUCCESS [  0.038 s]</span><br><span class="line">[INFO] Thingsboard Server Commons ......................... SUCCESS [  0.002 s]</span><br><span class="line">[INFO] Thingsboard Server Common Transport components ..... SUCCESS [  1.797 s]</span><br><span class="line">[INFO] Thingsboard MQTT Transport Common .................. SUCCESS [  1.965 s]</span><br><span class="line">[INFO] Thingsboard HTTP Transport Common .................. SUCCESS [  0.071 s]</span><br><span class="line">[INFO] Thingsboard CoAP server ............................ SUCCESS [  0.050 s]</span><br><span class="line">[INFO] Thingsboard CoAP Transport Common .................. SUCCESS [  0.883 s]</span><br><span class="line">[INFO] Thingsboard LwM2M Transport Common ................. SUCCESS [  0.095 s]</span><br><span class="line">[INFO] Thingsboard SNMP Transport Common .................. SUCCESS [  0.053 s]</span><br><span class="line">[INFO] Thingsboard Server Common DAO API .................. SUCCESS [  0.069 s]</span><br><span class="line">[INFO] Thingsboard Server Remote Edge wrapper ............. SUCCESS [  2.583 s]</span><br><span class="line">[INFO] Thingsboard Server Version Control API ............. SUCCESS [  0.057 s]</span><br><span class="line">[INFO] Thingsboard Script Invoke Commons .................. SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Server Script invoke API ............... SUCCESS [  0.031 s]</span><br><span class="line">[INFO] Thingsboard Extensions ............................. SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard Rule Engine API ........................ SUCCESS [  0.047 s]</span><br><span class="line">[INFO] Thingsboard Server JS Client for remote JS execution SUCCESS [  0.057 s]</span><br><span class="line">[INFO] Thingsboard Server DAO Layer ....................... SUCCESS [  0.279 s]</span><br><span class="line">[INFO] Thingsboard Rule Engine Components ................. SUCCESS [  0.482 s]</span><br><span class="line">[INFO] Thingsboard Server Transport Modules ............... SUCCESS [  0.003 s]</span><br><span class="line">[INFO] Thingsboard HTTP Transport Service ................. SUCCESS [ 16.460 s]</span><br><span class="line">[INFO] Thingsboard MQTT Transport Service ................. SUCCESS [ 16.444 s]</span><br><span class="line">[INFO] Thingsboard CoAP Transport Service ................. SUCCESS [ 15.747 s]</span><br><span class="line">[INFO] Thingsboard LwM2m Transport Service ................ SUCCESS [ 15.983 s]</span><br><span class="line">[INFO] Thingsboard SNMP Transport Service ................. SUCCESS [ 15.843 s]</span><br><span class="line">[INFO] ThingsBoard Server UI .............................. SUCCESS [ 40.597 s]</span><br><span class="line">[INFO] Thingsboard Server Tools ........................... SUCCESS [  0.103 s]</span><br><span class="line">[INFO] Thingsboard Rest Client ............................ SUCCESS [  0.033 s]</span><br><span class="line">[INFO] ThingsBoard Server Application ..................... SUCCESS [ 36.036 s]</span><br><span class="line">[INFO] ThingsBoard Microservices .......................... SUCCESS [  0.078 s]</span><br><span class="line">[INFO] ThingsBoard Docker Images .......................... SUCCESS [  0.825 s]</span><br><span class="line">[INFO] ThingsBoard Web UI Microservice .................... FAILURE [02:23 min]</span><br><span class="line">[INFO] ThingsBoard Version Control Executor ............... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Version Control Executor Microservice .. SKIPPED</span><br><span class="line">[INFO] ThingsBoard Node Microservice ...................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Transport Microservices ................ SKIPPED</span><br><span class="line">[INFO] ThingsBoard MQTT Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard HTTP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard COAP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard LWM2M Transport Microservice ........... SKIPPED</span><br><span class="line">[INFO] ThingsBoard SNMP Transport Microservice ............ SKIPPED</span><br><span class="line">[INFO] ThingsBoard JavaScript Executor Microservice ....... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Monitoring Service ..................... SKIPPED</span><br><span class="line">[INFO] ThingsBoard Monitoring Microservice ................ SKIPPED</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD FAILURE</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  05:20 min</span><br><span class="line">[INFO] Finished at: 2023-07-29T14:16:19+08:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal com.github.eirslett:frontend-maven-plugin:1.12.0:yarn (yarn pkg) on project web-ui: Failed to run task: &#x27;yarn run pkg&#x27; failed. org.apache.commons.exec.ExecuteException: Process exited with an error: 2 (Exit value: 2) -&gt; [Help 1]</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span><br><span class="line">[ERROR] Re-run Maven using the -X switch to enable full debug logging.</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] For more information about the errors and possible solutions, please read the following articles:</span><br><span class="line">[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException</span><br><span class="line">[ERROR] </span><br><span class="line">[ERROR] After correcting the problems, you can resume the build with the command</span><br><span class="line">[ERROR]   mvn &lt;args&gt; -rf :web-ui</span><br><span class="line"></span><br><span class="line">Process finished with exit code 1</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：<br>前往：<a target="_blank" rel="noopener" href="https://github.com/vercel/pkg-fetch/releases">https://github.com/vercel/pkg-fetch/releases</a> 下载所需要的文件，放置在用户文件夹下：<br><user>/.pkg-cache/vxx/，例如mac的位置为：/Users/meng/.pkg-cache/v3.4</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <picture><source srcset="https://npm.elemecdn.com/mengblog@1.0.6/images/wechatpay.webp" type="image/webp"><img loading="lazy" id="wechat_qr" src="https://npm.elemecdn.com/mengblog@1.0.6/images/wechatpay.png" alt=" 微信扫一扫，向我赞赏"/></picture>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <picture><source srcset="https://npm.elemecdn.com/mengblog@1.0.6/images/alipay.webp" type="image/webp"><img loading="lazy" id="alipay_qr" src="https://npm.elemecdn.com/mengblog@1.0.6/images/alipay.png" alt=" 支付宝扫一扫，向我赞赏"/></picture>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/thingsboard/" rel="tag"># thingsboard</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/41934.html" rel="next" title="Thingsboard笔记">
+                <i class="fas fa-angle-left"></i> Thingsboard笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="waline"></div>
+    </div>
+    
+  
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="module">
+    import { init } from 'https://npm.elemecdn.com/mengblog@1.0.2/js/waline.mjs';
+
+init({
+	el: '#waline',
+	serverURL: 'https://waline-blog.meng.me',
+	emoji: [
+      'https://npm.elemecdn.com/mengblog@1.0.1/emojis/bmoji',
+      'https://npm.elemecdn.com/mengblog@1.0.1/emojis/weibo',
+    ],
+});
+  </script>
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            关于我
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpeg"
+              alt="" />
+            <div class="site-author-info">
+              <p class="site-author-name" itemprop="name">Meng</p>
+              <p class="site-description motion-element" itemprop="description">Void missing_you() For(time=meet_you;;time++) Missing_you()</p>
+            </div>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="https://twitter.com/mengGod129" target="_blank" title="Twitter">
+                    
+                       <i class="fab fa-twitter" style="color: #2FB0EC"></i><span>Twitter</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="https://space.bilibili.com/401691307" target="_blank" title="bilibili">
+                    
+                       <i style="fill: #20B0E3;"><svg t="1581180571735" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1122"><path d="M813.2864 234.5216h-53.0176l46.3872-46.3872c19.8912-19.8912 19.8912-59.648 0-79.5136s-59.648-19.8912-79.5136 0l-132.5312 125.9008h-159.0272l-132.5312-125.9008c-19.8912-19.8912-59.648-19.8912-79.5136 0s-19.8912 59.648 0 79.5136l46.3872 46.3872H216.9088c-92.7744 0-165.6576 72.8832-165.6576 165.6576v357.8112c0 99.4048 72.8832 172.288 165.6576 172.288h589.7216c92.7744 0 165.6576-72.8832 165.6576-165.6576V400.1792c6.6304-92.7744-66.2528-165.6576-159.0272-165.6576z m46.3872 523.4688a59.392 59.392 0 0 1-59.648 59.648H223.5392a59.392 59.392 0 0 1-59.648-59.648V406.8096a59.392 59.392 0 0 1 59.648-59.648h576.4864a59.392 59.392 0 0 1 59.648 59.648v351.1808z m-516.864-291.5328a59.392 59.392 0 0 0-59.648 59.648v59.648c0 33.1264 26.496 59.648 59.648 59.648s59.648-26.496 59.648-59.648v-59.648a59.392 59.392 0 0 0-59.648-59.648z m344.576 0a59.392 59.392 0 0 0-59.648 59.648v59.648c0 33.1264 26.496 59.648 59.648 59.648s59.648-26.496 59.648-59.648v-59.648a59.392 59.392 0 0 0-59.648-59.648z" p-id="1123"></path></svg></i><span>bilibili</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="https://www.pixiv.net/users/55485284" target="_blank" title="pixiv">
+                    
+                       <i><svg t="1581192678406" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1663"><path d="M701.515 301.152c-44.44-46.092-100.245-64.919-163.08-65.107-29.552-0.089-58.595 4.617-87.095 12.455-28.961 7.965-56.673 18.839-81.996 35.306-3.347 2.176-4.69 4.686-4.695 8.694-0.034 29.713-0.333 59.424-0.426 89.137-0.085 27.263-0.018 54.527-0.021 81.79-0.004 56.836 0.053 113.674-0.097 170.51-0.015 5.326 1.57 8.393 6.639 10.576 17.881 7.7 36.245 13.85 55.161 18.37 30.808 7.36 62.082 10.876 93.715 12.36 33.75 1.583 66.83-1.28 98.832-12.378 61.328-21.265 105.46-61.217 129.447-121.99 15.492-39.25 17.417-80.058 10.877-121.393-7.146-45.173-25.384-85.268-57.26-118.33z" fill="#0074AA" p-id="1664"></path><path d="M512 17.482C238.886 17.482 17.482 238.886 17.482 512S238.886 1006.518 512 1006.518 1006.518 785.114 1006.518 512 785.114 17.482 512 17.482z m327.127 530.516c-18.962 47.58-50.687 84.816-92.709 113.517-43.734 29.872-92.452 46.554-144.647 53.74-66.355 9.136-131.115 0.236-195.108-17.307-12.485-3.423-24.767-7.483-37.009-11.676-4.732-1.62-5.413-1.201-5.42 3.878-0.049 33.583 0.004 67.165-0.069 100.748-0.008 3.782 1.314 5.86 5.093 7.004 7.233 2.187 14.26 5.003 20.384 9.602 3.594 2.699 6.19 5.968 5.824 10.873-0.43 5.752-3.64 8.957-9.432 8.968-19.872 0.039-39.744 0.014-59.617 0.014-19.41 0.006-38.82-0.103-58.23 0.082-4.736 0.045-8.025-1.288-9.814-5.842-1.798-4.575-0.752-8.45 2.566-11.847 5.698-5.833 13.181-8.404 20.593-11 7.625-2.668 7.8-0.933 7.8-10.86-0.02-151.738-0.02-303.476-0.076-455.215-0.001-2.353 1.227-5.726-1.09-6.829-2.297-1.094-4.167 1.976-6 3.442-22.584 18.058-43.474 37.783-60.052 61.694-0.527 0.76-1.03 1.537-1.588 2.273-5.878 7.727-9.827 15.6-5.76 25.855 1.946 4.91 1.707 10.59 0.282 15.968-0.937 3.532-2.436 6.64-5.44 8.865-5.016 3.718-8.469 3.16-11.788-2.085-12.847-20.308-25.59-40.682-38.532-60.928-2.117-3.313-1.999-5.634 0.715-8.492 17.758-18.692 37.058-35.675 57.256-51.635 51.148-40.413 106.911-72.725 168.335-94.902 40.036-14.455 81.234-23.72 123.709-27.312 49.596-4.194 98.488-0.765 146.365 13.295 50.8 14.919 95.584 40.146 131.966 79.103 36.324 38.896 58.162 84.856 65.163 137.62 5.425 40.866 1.694 80.839-13.67 119.389z" fill="#0074AA" p-id="1665"></path></svg></i><span>pixiv</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="https://github.com/mengGod129" target="_blank" title="GitHub">
+                    
+                       <i class="fab fa-github" style="color: #191717"></i><span>GitHub</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="https://t.me/mengGods" target="_blank" title="Telegram 频道">
+                    
+                       <i class="fab fa-telegram" style="color: #41AADE"></i><span>TG频道</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="javascript:;" target="_blank" title="Telegram 群">
+                    
+                       <i class="fab fa-telegram" style="color: #41AADE"></i><span>TG群</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="/atom.xml" target="_blank" title="RSS">
+                    
+                       <i style="fill: #F78422;"><svg t="1581190724531" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16212"><path d="M512 0a512 512 0 1 0 512 512A512 512 0 0 0 512 0z m-130.72 736a71.84 71.84 0 0 1-38.72 38.4 74.24 74.24 0 0 1-56.8 0 72.64 72.64 0 0 1-38.4-38.4 73.44 73.44 0 0 1 16-80 72.48 72.48 0 0 1 22.88-16 72.96 72.96 0 0 1 96 96z m192 32a51.84 51.84 0 0 1-88.32-36.64 187.52 187.52 0 0 0-15.2-75.04 194.08 194.08 0 0 0-102.72-102.72 186.72 186.72 0 0 0-75.04-15.2 51.84 51.84 0 0 1 0-103.52 284.64 284.64 0 0 1 115.2 23.52 300.64 300.64 0 0 1 157.76 157.76 284.96 284.96 0 0 1 23.52 115.2 49.92 49.92 0 0 1-15.52 37.44z m195.84 0a51.84 51.84 0 0 1-88.48-36.64 378.72 378.72 0 0 0-13.92-103.2 393.92 393.92 0 0 0-39.2-92.96 389.92 389.92 0 0 0-232.48-177.76 380 380 0 0 0-103.2-13.92 51.84 51.84 0 0 1-36.64-88.48 49.92 49.92 0 0 1 36.48-15.04 483.2 483.2 0 0 1 130.72 17.6 494.08 494.08 0 0 1 344 344 483.2 483.2 0 0 1 17.6 130.72 50.08 50.08 0 0 1-15.2 36.48z" p-id="16213"></path></svg></i><span>RSS</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="javascript:;" target="_blank" title="PSN">
+                    
+                       <i class="fab fa-playstation" style="color: #003791"></i><span>PSNprofiles</span></a>
+                </span>
+              
+                <span class="links-of-author-item scaleup">
+                  <a href="javascript:;" target="_blank" title="NS">
+                    
+                       <i style="fill: #E60012;"><svg t="1581180843998" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4383"><path d="M255.69989 67c-89.2 16-161 82-183.6 168.8C63.89989 267.2 63.29989 285.6 64.29989 528.8 64.69989 752 64.89989 757.2 68.69989 774.6c20.6 93 86.6 159.2 180.6 181 12.2 2.8 27.8 3.4 128.2 3.8 103.8 0.8 114.6 0.6 117.4-2.2 2.8-2.8 3-38.6 3-444.4 0-301-0.6-442.6-1.8-445.2-1.8-3.4-5-3.6-113.8-3.4-88.4 0.2-115 0.8-126.6 2.8z m167.8 445.2V888l-75.6-1c-69.6-0.8-77-1.2-91-4.6-59.8-15.4-104-61.4-116.6-121.4-4-18.8-4-480.2-0.2-498.6 11.2-52.2 47.4-95.4 96-114.8 24.4-9.8 35.8-11 115.2-11.2l71.8-0.2v376z m-151.8-262.4c-11.6 2.2-29.4 11.2-39 19.4-19.4 16.8-29.2 40.8-27.6 69 0.8 14.6 1.6 18.6 7.6 30.4 8.8 18 21.8 31.2 39.8 40 12.4 6.2 15.6 6.8 31.8 7.4 14.6 0.6 19.8 0 29.6-3.4 40.2-13.6 64.6-52.6 57.6-92.8-7.8-47.4-53.2-79.4-99.8-70z m316.4-184.6c-0.8 0.6-1.2 201.6-1.2 447 0 404.6 0.2 445.6 3 446.8 5 1.8 149 1.2 166.8-0.8 75.4-8.6 142-54.4 178-122.4 4.6-8.8 10.8-23.4 14-32.4 11.6-34.8 11.4-25.6 11.4-292.2 0-212.8-0.4-244.6-3-258-18.4-96.6-92.2-169.6-189-186.2-13-2.2-33-2.8-97.6-2.8-44.8-0.2-81.8 0.4-82.4 1z m198.2 404.2c29 7.6 52.6 29.6 62.4 57.8 6.2 17.4 6 43-0.2 59-11.4 29.4-33.6 50-62.2 57.6-46.4 12-95.8-16-109.2-62-4-14-3.8-37.8 0.8-52.4 13.8-45.4 62-72.2 108.4-60z" p-id="4384"></path></svg></i><span>SW-0000-0000-0000</span></a>
+                </span>
+              
+            
+          </div>
+
+          <div class="des-of-author">
+              <div class="des-of-author-nav">
+                
+              </div>
+              <div class="des-of-author-panel">
+                
+              </div>
+          </div>
+
+          
+
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E4%BB%A3%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">拉取代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">修改文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8Bpom-xml"><span class="nav-number">2.1.</span> <span class="nav-text">根目录下pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node%E5%92%8Cyarn%E7%89%88%E6%9C%AC"><span class="nav-number">2.2.</span> <span class="nav-text">node和yarn版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEnode%E3%80%81yarn%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">设置node、yarn镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#install-ui-ngx"><span class="nav-number">4.</span> <span class="nav-text">install ui-ngx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E7%BC%96%E8%AF%91"><span class="nav-number">5.</span> <span class="nav-text">开始编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E4%B8%80%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">错误一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E4%BA%8C"><span class="nav-number">6.2.</span> <span class="nav-text">错误二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image">
+        <picture><source srcset="/images/footer.webp" type="image/webp"><img loading="lazy" src="/images/footer.png"></picture>
+      </div>
+      <div class="footer-inner">
+        <p>博客已运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+
+
+<p>© <span itemprop="copyrightYear">2023</span> mengGod.
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v1.0.13.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.湘ICP备2023001520号
+</p>
+<p>Made with <i class="fas fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">Meng</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <picture><source srcset="/images/scroll.webp" type="image/webp"><img loading="lazy" src="/images/scroll.png"></picture>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+
+    
+
+  </div>
+
+  <script type="module" src="https://npm.elemecdn.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="text/javascript" src="/js/sagiri.min.js?v=1.0.13"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!--<script>
+    // remove service worker cache
+    // from https://stackoverflow.com/questions/33704791/how-do-i-uninstall-a-service-worker
+    "use strict";
+    if(navigator.serviceWorker)
+    {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+  </script>-->
+</body>
+</html>
