@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.meng.me/posts/53523.html</loc>
+    
+    <lastmod>2024-01-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/posts/31755.html</loc>
     
     <lastmod>2023-07-29</lastmod>
@@ -88,7 +95,7 @@
 
   <url>
     <loc>https://www.meng.me/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -96,35 +103,35 @@
   
   <url>
     <loc>https://www.meng.me/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/Alist/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/ubuntu/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/thingsboard/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.meng.me/tags/NPM/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -133,7 +140,7 @@
   
   <url>
     <loc>https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/</loc>
-    <lastmod>2023-09-16</lastmod>
+    <lastmod>2024-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
