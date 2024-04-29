@@ -109,6 +109,13 @@
   </url>
   
   <url>
+    <loc>https://www.meng.me/tags/thingsboard/</loc>
+    <lastmod>2024-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/tags/Alist/</loc>
     <lastmod>2024-04-29</lastmod>
     <changefreq>daily</changefreq>
@@ -117,13 +124,6 @@
   
   <url>
     <loc>https://www.meng.me/tags/NPM/</loc>
-    <lastmod>2024-04-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.meng.me/tags/thingsboard/</loc>
     <lastmod>2024-04-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
