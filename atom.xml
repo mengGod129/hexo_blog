@@ -6,7 +6,7 @@
   <link href="https://www.meng.me/atom.xml" rel="self"/>
   
   <link href="https://www.meng.me/"/>
-  <updated>2024-01-17T04:04:34.050Z</updated>
+  <updated>2024-04-29T12:41:04.027Z</updated>
   <id>https://www.meng.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo升级指南</title>
+    <link href="https://www.meng.me/posts/60773.html"/>
+    <id>https://www.meng.me/posts/60773.html</id>
+    <published>2024-04-29T12:13:47.000Z</published>
+    <updated>2024-04-29T12:41:04.027Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久没写博客了，24年都呆在保密单位上班，现在暂时闲下来发现hexo版本都到7.x了，我的还停留在5.x，更新一波～<br><img src="/postsImages/2024/update_hexo/updateHexo1.jpg" alt="updateHexo1"></p><span id="more"></span><h2 id="查看hexo版本"><a href="#查看hexo版本" class="headerlink" title="查看hexo版本"></a>查看hexo版本</h2><p>使用命令：<code>hexo version</code><br><img src="/postsImages/2024/update_hexo/updateHexo2.jpg" alt="updateHexo2"></p><blockquote><p>可以看到，当前我的hexo版本还是5.4.2，因为经常使用nodeJs等，所以不对nodeJs更新进行记录了，推荐使用nvm，挺好用的～</p></blockquote><h2 id="更新hexo"><a href="#更新hexo" class="headerlink" title="更新hexo"></a>更新hexo</h2><p>1、全局升级hexo-cli：使用命令：<code>npm install -g hexo-cli</code><br>2、使用npm-check查看插件升级<br>提示：<code>zsh: command not found: npm-upgrade</code>说明没安装，安装命令：<code>npm install -g npm-check</code><br>安装了使用命令：<code>npm-check</code><br><img src="/postsImages/2024/update_hexo/updateHexo3.jpg" alt="updateHexo3"><br>最后它会提示：<code>Use npm-check -u for interactive update.</code>进行更新。<br>3、使用npm-upgrade升级相关插件<br>同样的，如果没安装就先安装，安装命令：<code>npm install -g npm-upgrade</code><br>安装了使用命令：<code>npm-upgrade</code><br><img src="/postsImages/2024/update_hexo/updateHexo4.jpg" alt="updateHexo4"><br>它会列出你需要更新的列表，从哪个版本更新到哪个版本，如果同意选择yes即可。<br>更新完了或者没有新版本会提示：<code>All dependencies are up-to-date!</code></p><h2 id="更新检查"><a href="#更新检查" class="headerlink" title="更新检查"></a>更新检查</h2><p>这个就简单了，直接运行看看页面、功能等是不是正常的就行了。<br>1、先清理下hexo数据：<code>hexo clean</code><br>2、重新生成下页面：<code>hexo g -s</code><br>3、如果没问题就可以推送了：<code>hexo d</code></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;好久没写博客了，24年都呆在保密单位上班，现在暂时闲下来发现hexo版本都到7.x了，我的还停留在5.x，更新一波～&lt;br&gt;&lt;img src=&quot;/postsImages/2024/update_hexo/updateHexo1.jpg&quot; alt=&quot;updateHexo1&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Thingsboard网关开发笔记</title>

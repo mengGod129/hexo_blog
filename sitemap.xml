@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.meng.me/posts/60773.html</loc>
+    
+    <lastmod>2024-04-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.meng.me/posts/53523.html</loc>
     
     <lastmod>2024-01-17</lastmod>
@@ -109,14 +116,14 @@
   </url>
   
   <url>
-    <loc>https://www.meng.me/tags/thingsboard/</loc>
+    <loc>https://www.meng.me/tags/Alist/</loc>
     <lastmod>2024-04-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.meng.me/tags/Alist/</loc>
+    <loc>https://www.meng.me/tags/thingsboard/</loc>
     <lastmod>2024-04-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
